@@ -4,12 +4,12 @@ import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
 import Row from 'react-bootstrap/Row';
-import "./profileForm.css"
+import "./signUp.css"
 import {country } from "../../data/country";
 import {languageList } from "../../data/languagesList"
 import {level} from "../../data/level"
 
-function ProfileForm({active, setActive}) {
+function signUp({active, setActive}) {
   const [validated, setValidated] = useState(false);
 
   const handleSubmit = (event) => {
@@ -161,4 +161,4 @@ function ProfileForm({active, setActive}) {
   );
 }
 
-export default ProfileForm;
+export default signUp;
