@@ -9,7 +9,7 @@ import {country } from "../../data/country";
 import {languageList } from "../../data/languagesList"
 import {level} from "../../data/level"
 
-function ProfileForm() {
+function ProfileForm({active, setActive}) {
   const [validated, setValidated] = useState(false);
 
   const handleSubmit = (event) => {
@@ -24,9 +24,12 @@ function ProfileForm() {
 
 
   return (
-    <div className="wrapper-form">
+    <div className={active ? "modal active" : "modal"} onClick={() => setActive(false)}>
+      <div className={active ? "modal__content active" : "modal__content"} onClick={(e) => e.stopPropagation()}>
+         <h3>Create your profile</h3>
     <Form noValidate validated={validated} onSubmit={handleSubmit}>
-      <Row className="mb-4">
+          
+      <Row className="mb-2">
         <Form.Group as={Col} controlId="validationCustom01">
           <Form.Label>First and last name</Form.Label>
           <Form.Control
@@ -38,10 +41,8 @@ function ProfileForm() {
           <Form.Control.Feedback type="invalid">please, fill first and last name</Form.Control.Feedback>
           <Form.Control.Feedback >Looks good!</Form.Control.Feedback>
         </Form.Group>
-      </Row>
 
-      <Row className="mb-4">
-        <Form.Group as={Col} controlId="validationCustomUsername">
+         <Form.Group as={Col} controlId="validationCustomUsername">
           <Form.Label>Username</Form.Label>
           <InputGroup hasValidation>
             <InputGroup.Text id="inputGroupPrepend">@</InputGroup.Text>
@@ -59,7 +60,9 @@ function ProfileForm() {
         </Form.Group>
       </Row>
 
-      <Row className="mb-4">
+     
+       
+      <Row className="mb-2">
         <Form.Group as={Col} controlId="validationCustom03">
           <Form.Label>Email address</Form.Label>
           <Form.Control type="email" placeholder="Enter email" required />
@@ -70,7 +73,7 @@ function ProfileForm() {
         </Form.Group>
         </Row>
 
-      <Row className="mb-4">
+      <Row className="mb-2">
         <Form.Group as={Col} controlId="validationCustom04">
           <Form.Label>Password</Form.Label>
           <Form.Control type="password" placeholder="Password" required />
@@ -82,7 +85,7 @@ function ProfileForm() {
       </Row>
 
 
-      <Row className="mb-4">
+      <Row className="mb-2">
         <Form.Group as={Col} controlId="validationCustom05">
         <Form.Label>Nationality</Form.Label>
         <Form.Control required as="select" type="select" name="nationality">
@@ -103,7 +106,7 @@ function ProfileForm() {
         </Form.Group>
       </Row>
 
-      <Row className="mb-4">
+      <Row className="mb-2">
         <Form.Group as={Col} controlId="validationCustom06">
         <Form.Label>Language you can speak</Form.Label>
         <Form.Control required as="select" type="select" name="language">
@@ -122,9 +125,7 @@ function ProfileForm() {
           </Form.Control.Feedback>
           <Form.Control.Feedback >Looks good!</Form.Control.Feedback>
         </Form.Group>
-      </Row>
-
-      <Row className="mb-4">
+    
         <Form.Group as={Col} controlId="validationCustom07">
         <Form.Label>Language Level</Form.Label>
         <Form.Control required as="select" type="select" name="level">
@@ -146,15 +147,16 @@ function ProfileForm() {
       </Row>
 
 
-      <Row className="mb-4">
+      <Row className="mb-3">
         <Form.Group as={Col} controlId="validationCustom08">
           <Form.Label>BIO</Form.Label>
-          <Form.Control as="textarea" rows={8} placeholder="Your bio" />
+          <Form.Control as="textarea" rows={4} placeholder="Your bio" />
         </Form.Group>
       </Row>
       
       <Button type="submit">Signup</Button>
     </Form>
+    </div>
     </div>
   );
 }
