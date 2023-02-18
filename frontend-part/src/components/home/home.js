@@ -12,7 +12,7 @@ function Home() {
                 <h2>Welcome to Language Buddy</h2>
               </div>
               <div className="welcome_block">
-                 <p>A plantform to exchange and learn new languages and about cultures</p>
+                 <p>Aplantform to exchange and learn new languages and about cultures</p>
                 </div> 
             </div> 
         </main>
