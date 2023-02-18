@@ -1,16 +1,20 @@
+
 import "./home.css"
+import welcome from "../../images/welcome_page.png"
+
 
 function Home() {
+
     return (
         <main>
             <div className="wrapper">
-                 <h2>Home</h2>
-                 <div className="buttons_wrapper">
-                    <button className="button create_button">Create new account</button>
-                    <button className="button login_button">Login</button>
-                 </div>
-            </div>
-            
+              <div className="welcome_slider">
+                <h2>Welcome to Language Buddy</h2>
+              </div>
+              <div className="welcome_block">
+                 <p>Aplantform to exchange and learn new languages and about cultures</p>
+                </div> 
+            </div> 
         </main>
        
     )

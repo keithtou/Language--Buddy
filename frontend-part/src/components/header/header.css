@@ -1,6 +1,41 @@
 header {
-  background-color: gray;
-  height: 10vh;
+ background-color:  #0297A6;;
+  height: 110px;
 }
+
+.header__content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  margin-top: 10px;
+
+}
+
+
+
+.buttons_wrapper {
+  display: flex;
+  justify-content: right;
+  /* align-items: center; */
+}
+
+.button {
+  width: 145px;
+  padding: 5px 33px;
+  background-color: #C85517;
+  color: #FFF8F8;
+  border-radius: 28px;
+  border: none;
+
+  /* padding: 15px; */
+}
+
+.create_button {
+  margin-right: 20px;
+}
+
 
   
