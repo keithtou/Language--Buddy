@@ -1,25 +1,20 @@
-import { useState } from "react";
-import "./home.css"
 
-import SignUp from '../signUp/signUp';
-import SignIn from "../signIn/signIn";
+import "./home.css"
+import welcome from "../../images/welcome_page.png"
 
 
 function Home() {
-    const [modalActive, setModalActive] = useState(true);
-    const [loginFormActive, setLoginFormActive] = useState(true);
 
     return (
         <main>
             <div className="wrapper">
-                 <h2>Home</h2>
-                 <div className="buttons_wrapper">
-                    <button className="button create_button" onClick={() => setModalActive(true)}>Create new account</button>
-                    <button className="button login_button" onClick={() => setLoginFormActive(true)}>Login</button>
-                 </div>
-            </div>
-            <SignUp active={modalActive} setActive={setModalActive}></SignUp>
-            <SignIn loginActive={loginFormActive} setLoginActive={setLoginFormActive}></SignIn>
+              <div className="welcome_slider">
+                <h2>Welcome to Language Buddy</h2>
+              </div>
+              <div className="welcome_block">
+                 <p>A plantform to exchange and learn new languages and about cultures</p>
+                </div> 
+            </div> 
         </main>
        
     )

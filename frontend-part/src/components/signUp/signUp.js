@@ -8,6 +8,7 @@ import "./signUp.css"
 import {country } from "../../data/country";
 import {languageList } from "../../data/languagesList"
 import {level} from "../../data/level"
+import {gender} from "../../data/gender"
 
 function signUp({active, setActive}) {
   const [validated, setValidated] = useState(false);
@@ -71,9 +72,7 @@ function signUp({active, setActive}) {
           </Form.Control.Feedback>
           <Form.Control.Feedback >Looks good!</Form.Control.Feedback>
         </Form.Group>
-        </Row>
-
-      <Row className="mb-2">
+       
         <Form.Group as={Col} controlId="validationCustom04">
           <Form.Label>Password</Form.Label>
           <Form.Control type="password" placeholder="Password" required />
@@ -89,7 +88,7 @@ function signUp({active, setActive}) {
         <Form.Group as={Col} controlId="validationCustom05">
         <Form.Label>Nationality</Form.Label>
         <Form.Control required as="select" type="select" name="nationality">
-          <option value="">-- select one --</option>
+          <option value="">-- choose --</option>
   
           {country.map((element) => {
             return (
@@ -104,13 +103,32 @@ function signUp({active, setActive}) {
           </Form.Control.Feedback>
           <Form.Control.Feedback >Looks good!</Form.Control.Feedback>
         </Form.Group>
+
+        <Form.Group as={Col} controlId="validationCustom09">
+        <Form.Label>Gender</Form.Label>
+        <Form.Control required as="select" type="select" name="gender">
+          <option value="">-- choose --</option>
+  
+          {gender.map((element) => {
+            return (
+              <option value={element} key={element}>
+              {element}
+              </option>
+            );
+          })}
+        </Form.Control>
+        <Form.Control.Feedback type="invalid">
+            Please choose your gender.
+          </Form.Control.Feedback>
+          <Form.Control.Feedback >Looks good!</Form.Control.Feedback>
+        </Form.Group>
       </Row>
 
       <Row className="mb-2">
         <Form.Group as={Col} controlId="validationCustom06">
         <Form.Label>Language you can speak</Form.Label>
         <Form.Control required as="select" type="select" name="language">
-          <option value="">-- select one --</option>
+          <option value="">-- choose --</option>
   
           {languageList.map((element) => {
             return (
@@ -129,7 +147,7 @@ function signUp({active, setActive}) {
         <Form.Group as={Col} controlId="validationCustom07">
         <Form.Label>Language Level</Form.Label>
         <Form.Control required as="select" type="select" name="level">
-          <option value="">-- select one --</option>
+          <option value="">-- choose --</option>
   
           {level.map((element) => {
             return (
@@ -145,7 +163,17 @@ function signUp({active, setActive}) {
           <Form.Control.Feedback >Looks good!</Form.Control.Feedback>
         </Form.Group>
       </Row>
-
+      
+      <Row className="mb-2">
+      <Form.Group as={Col} controlId="date">
+          <Form.Label>Birthday</Form.Label>
+          <Form.Control type="date" required />
+          <Form.Control.Feedback type="invalid">
+            Please provide a valid email address.
+          </Form.Control.Feedback>
+          <Form.Control.Feedback >Looks good!</Form.Control.Feedback>
+        </Form.Group>
+      </Row>
 
       <Row className="mb-3">
         <Form.Group as={Col} controlId="validationCustom08">
@@ -153,6 +181,9 @@ function signUp({active, setActive}) {
           <Form.Control as="textarea" rows={4} placeholder="Your bio" />
         </Form.Group>
       </Row>
+
+
+      
       
       <Button type="submit">Signup</Button>
     </Form>
