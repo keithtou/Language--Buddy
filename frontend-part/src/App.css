@@ -1,6 +1,8 @@
 html {
   box-sizing: border-box;
   overflow-x: hidden;
+  padding: 0;
+  margin: 0;
 
 }
 
@@ -11,10 +13,13 @@ html {
 }
 
 body {
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Quicksand';
   font-style: normal;
   font-weight: 500;
-  /* display: inline-block; */
+  background-image: url("./images/back.png");
+  background-repeat: no-repeat;
+  background-size: auto;
+  /* background-color: #cccccc; */
 
 }
 
@@ -30,5 +35,3 @@ h1 {
   overflow: hidden;
 
 }
-
-
