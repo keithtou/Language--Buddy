@@ -3,15 +3,23 @@ import './App.css';
 import Header from './components/header/header';
 import Home from './components/home/home';
 import Footer from './components/footer/footer';
-import ProfileForm from './components/signUp/signUp';
+import { Routes, Route } from 'react-router-dom';
+import SignIn from './components/signIn/signIn';
+import SignUp from './components/signUp/signUp';
+import Profile_created from './components/profile_created/profile_created';
+
 
 
 function App() {
   return (
     <div>
-      <Header></Header>
-      <Home></Home>
-      <Footer ></Footer>
+      <Routes>
+              <Route exact path="/" element={<Home />} />
+              <Route path="/login" element={<SignIn />} />
+              <Route path="/register" element={<SignUp />} />
+              <Route path="/register" element={<SignUp />} />
+              <Route path="/profile_created" element={<Profile_created />} />
+      </Routes>
     </div>
    
   );

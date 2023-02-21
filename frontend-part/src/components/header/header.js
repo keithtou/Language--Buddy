@@ -1,34 +1,26 @@
 
-
-import { useState } from "react";
 import logo from '../../images/logo.png';
 import './header.css';
-import SignUp from '../signUp/signUp';
-import SignIn from "../signIn/signIn";
-
+import { useNavigate } from "react-router-dom";
+import Button from 'react-bootstrap/esm/Button';
 
 function Header() {
-    const [modalActive, setModalActive] = useState(true);
-    const [loginFormActive, setLoginFormActive] = useState(true);
+    const nav = useNavigate();
 
     return (
         <header>
             <div className="wrapper">
                 <div className="header__content">
-            <div className="logo">
-              <img src={logo} width="110" height="88" />
-            </div>
-        
-            <div className="buttons_wrapper">
-                    <button className="button create_button" onClick={() => setModalActive(true)}>Register</button>
-                    <button className="button login_button" onClick={() => setLoginFormActive(true)}>Login</button>
-                 </div>
-            </div>  
-             </div>
-            <SignUp active={modalActive} setActive={setModalActive}></SignUp>
-            <SignIn loginActive={loginFormActive} setLoginActive={setLoginFormActive}></SignIn> 
-        </header>
-        
+                    <div className="logo">
+                       <img src={logo} width="110" height="88" />
+                    </div>
+                    <div className="buttons_wrapper"> 
+                    <Button className="button create_button" type="submit" onClick={() => nav("/register", {replace: true})}>Register</Button>
+                    <Button  className="button login_button" type="submit" onClick={() => nav("/login")}>Login</Button>
+                    </div>
+                </div>  
+            </div>   
+        </header>   
     )
 }
 
