@@ -1,12 +1,16 @@
 
 import "./home.css"
 import welcome from "../../images/welcome_page.png"
+import Footer from "../footer/footer"
+import Header from "../header/header"
 
 
 function Home() {
 
     return (
-        <main>
+        <div>
+            <Header></Header>
+          <main>
             <div className="wrapper">
               <div className="welcome_slider">
                 <h2>Welcome to Language Buddy</h2>
@@ -15,8 +19,9 @@ function Home() {
                  <p>Aplantform to exchange and learn new languages and about cultures</p>
                 </div> 
             </div> 
-        </main>
-       
+          </main>
+          <Footer ></Footer>
+        </div>  
     )
 }
 

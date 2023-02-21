@@ -22,17 +22,6 @@ header {
   /* align-items: center; */
 }
 
-.button {
-  width: 145px;
-  padding: 5px 33px;
-  background-color: #C85517;
-  color: #FFF8F8;
-  border-radius: 28px;
-  border: none;
-
-  /* padding: 15px; */
-}
-
 .create_button {
   margin-right: 20px;
 }

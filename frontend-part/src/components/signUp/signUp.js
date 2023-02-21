@@ -1,16 +1,21 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
 import Row from 'react-bootstrap/Row';
-import "./signUp.css"
+import "./signUp.css";
 import {country } from "../../data/country";
-import {languageList } from "../../data/languagesList"
-import {level} from "../../data/level"
-import {gender} from "../../data/gender"
+import {languageList } from "../../data/languagesList";
+import {level} from "../../data/level";
+import {gender} from "../../data/gender";
+import Logo from '../logo/logo';
 
-function signUp({active, setActive}) {
+function SignUp() {
+
+  const nav = useNavigate();
+
   const [validated, setValidated] = useState(false);
 
   const handleSubmit = (event) => {
@@ -19,14 +24,16 @@ function signUp({active, setActive}) {
       event.preventDefault();
       event.stopPropagation();
     }
-
+    
     setValidated(true);
   };
 
 
   return (
-    <div className={active ? "modal active" : "modal"} onClick={() => setActive(false)}>
-      <div className={active ? "modal__content active" : "modal__content"} onClick={(e) => e.stopPropagation()}>
+    <div className="wrapper">
+    <div className="signup_wrapper">
+      <Logo />
+      <div className="signup__content">
          <h3>Create your profile</h3>
     <Form noValidate validated={validated} onSubmit={handleSubmit}>
           
@@ -182,14 +189,12 @@ function signUp({active, setActive}) {
         </Form.Group>
       </Row>
 
-
-      
-      
-      <Button type="submit">Signup</Button>
+      <Button className="button signup_login_button" type="submit" onClick={() => nav("/profile_created")}>Register</Button>
     </Form>
+    </div>
     </div>
     </div>
   );
 }
 
-export default signUp;
+export default SignUp;
