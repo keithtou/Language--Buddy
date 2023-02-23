@@ -3,7 +3,6 @@ import "./home.css"
 import welcome from "../../images/welcome_page.png"
 import Footer from "../footer/footer"
 import Header from "../header/header"
-import List from "../list/list"
 
 
 function Home() {
@@ -21,7 +20,6 @@ function Home() {
                 </div> 
             </div> 
           </main>
-          <List></List>
           <Footer ></Footer>
         </div>  
     )
