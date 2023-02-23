@@ -1,5 +1,5 @@
 header {
- background-color:  #0297A6;;
+  background-color: #0297a6;
   height: 110px;
 }
 
@@ -11,10 +11,7 @@ header {
 
 .logo {
   margin-top: 10px;
-
 }
-
-
 
 .buttons_wrapper {
   display: flex;
@@ -25,6 +22,3 @@ header {
 .create_button {
   margin-right: 20px;
 }
-
-
-  
