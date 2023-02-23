@@ -28,6 +28,10 @@ function SignUp() {
     setValidated(true);
   };
 
+  const start = () =>{
+    return setTimeout(()=> {nav("/profile_created")}, 1000) && setTimeout(()=> {nav("/list")}, 2000)
+  }
+
 
   return (
     <div className="wrapper">
@@ -189,7 +193,7 @@ function SignUp() {
         </Form.Group>
       </Row>
 
-      <Button className="button signup_login_button" type="submit" onClick={() => nav("/profile_created")}>Register</Button>
+      <Button className="button signup_login_button" type="submit" onClick={start}>Register</Button>
     </Form>
     </div>
     </div>
