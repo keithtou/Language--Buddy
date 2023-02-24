@@ -2,7 +2,6 @@ import "./home.css";
 import welcome from "../../images/welcome_page.png";
 import Footer from "../footer/footer";
 import Header from "../header/header";
-import BasicExample from "../SendRequest/BasicExample ";
 
 function Home() {
   return (
