@@ -49,14 +49,14 @@ app.post("/signup", function (req, res) {
 
   pool
     .query(query, [
-      "newUsername",
-      "newPassword",
+      newUsername,
+      newPassword,
       newName,
-      "newBirthday",
-      "newGender",
-      "newNationality",
-      "newBio",
-      "newEmail",
+      newBirthday,
+      newGender,
+      newNationality,
+      newBio,
+      newEmail,
     ])
     .then(() => res.send("Profile created!"))
     .catch((e) => console.error(e));

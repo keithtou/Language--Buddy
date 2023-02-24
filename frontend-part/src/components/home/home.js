@@ -14,7 +14,8 @@ function Home() {
           </div>
           <div className="welcome_block">
             <p>
-              Aplantform to exchange and learn new languages and about cultures
+              A plataform to exchange and learn new languages and about new
+              cultures
             </p>
           </div>
         </div>
