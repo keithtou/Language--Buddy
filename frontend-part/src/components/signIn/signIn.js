@@ -40,6 +40,7 @@ function SignIn() {
               variant="primary"
               type="submit"
               className="button signin_login_button"
+              onClick={()=> nav("/list")}
             >
               Login
             </Button>

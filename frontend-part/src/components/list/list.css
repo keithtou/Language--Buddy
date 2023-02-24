@@ -1,0 +1,22 @@
+.main_header {
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   flex-wrap: wrap;
+}
+
+.profile_button {
+    margin-right: 30px;
+}
+
+.filter_button {
+  margin-top: 20px;
+}
+
+.card-container {
+ display: flex;
+ flex-wrap: wrap;
+ align-items: center;
+ justify-content: space-between;
+ margin-top: 30px;
+}
