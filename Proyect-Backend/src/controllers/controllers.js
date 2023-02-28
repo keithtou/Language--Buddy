@@ -75,9 +75,29 @@ const createUser = async (req, res) => {
   }
 };
 
+//const sign_in = async (req, res) => {
+// const { email, password } = req.body;
+//console.log(email, password);
+//};
+
 const sign_in = async (req, res) => {
-  const { email, password } = req.body;
-  console.log(email, password);
+  let email = req.body.email;
+  let password = req.body.password;
+  console.log(email);
+  console.log(password);
+  const logIn = "SELECT * FROM user_info WHERE email = $1 and password = $2";
+  pool.query(logIn, [email, password], (error, result) => {
+    console.log(error);
+    console.log(result);
+    if (result.rows.length === 0) {
+      return res.status(400).send("User doesn't exist");
+    } else if (
+      (result.rows[0].email === email) &
+      (result.rows[0].password === password)
+    ) {
+      return res.status(200).send("Success");
+    }
+  });
 };
 
 module.exports = {
