@@ -3,10 +3,23 @@ import Button from "react-bootstrap/esm/Button";
 import { useNavigate } from "react-router-dom";
 import Logo from "../logo/logo";
 import StudentCard from "../studentCard/studentCard";
-import { state } from "../../data/students";
+// import { state } from "../../data/students";
 
 function List() {
   const nav = useNavigate();
+
+  const cards = async () => {
+    await fetch('http://localhost:4000/users')
+    .then((response) => {
+   
+        if (response.status === 200) {
+            return response.json()
+        } else {
+           return "messsagr"
+        }
+    })
+    .then((data) =>  data)
+}
 
     return (
         <div>
@@ -22,7 +35,7 @@ function List() {
                 <Button className="button filter_button" type="submit">Filter</Button>
             
                 <div className="card-container">
-                    {state.card.map((card) => {
+                    {cards.map((card) => {
                         return <StudentCard card={card} key={Math.random()} />;
                     })}
                 </div>
