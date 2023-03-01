@@ -17,6 +17,17 @@ function SignUp() {
   const [form, setForm] = useState({});
   const [errors, setErrors] = useState({});
 
+  const calcAge = (dateString) => {
+    const today = new Date();
+    const birthDate = new Date(dateString);
+    let age =  today.getFullYear() - birthDate.getFullYear()
+    let month =  today.getMonth() - birthDate.getMonth()
+    if(month < 0 || (month === 0 && today.getDate() < birthDate.getDate())) {
+      age--
+    } 
+    return age
+  }
+
   const setField = (field, value) => {
     setForm ({
       ...form, 
@@ -35,7 +46,7 @@ function SignUp() {
     const newErrors ={};
 
     if(!dob || dob === "") newErrors.dob = "Please enter your date birth"
-
+    else if(calcAge(dob) < 18) newErrors.dob = "You need to be at least 18 years"
     if(!fullname || fullname === "") newErrors.fullname = "Please enter your fullname"
     else if( /^[a-zA-Z ]*$/.test(fullname) != true) newErrors.fullname = "Please enter correct fullname"
     if(!username || username === "") newErrors.username = "Please enter your username"
@@ -60,8 +71,6 @@ function SignUp() {
      setErrors(formErrors)
   } else {
     register();
-    setTimeout(() => {nav("/profile_created")}, 1000);
-    setTimeout(() => {nav("/list")}, 4000)
     console.log (form)
   }
  }
@@ -95,18 +104,38 @@ function register() {
 
       })
   })
-  .then(data => data.json())
-  .then(response => window.localStorage.setItem('jwtToken', response.jwtToken))
+  .then((response) => {
+     if (!response.ok) {
+      document.querySelector(".exist_container").classList.add("visible");
+     setTimeout(() => {nav("/login")}, 4000);
+      throw new Error('Something went wrong');
+     }
+     return response.json()
+  })
+  .then(data => {
+    window.localStorage.setItem('jwtToken', data.jwtToken)
+    nav("/profile_created")
+    // setTimeout(() => {nav("/list")}, 4000)
+  })
+  .catch(error => console.log(error))
 }
 
+
+// if (response.status === 200) {
+//   return response.json()
+// } else {
+//  console.log("User already exist!") 
+//  document.querySelector(".exist_container").classList.add("visible")
+// }
+// })
    
- 
   return (
     <div className="wrapper">
     <div className="signup_wrapper">
       <Logo />
       <div className="signup__content">
          <h3>Create your profile</h3>
+         <h4 className='exist_container'>User already exist!</h4>
     <Form >
           
       <Row className="mb-2">
