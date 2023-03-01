@@ -105,12 +105,14 @@ function register() {
       })
   })
   .then((response) => {
-     if (!response.ok) {
+     if (response.status === 400) {
       document.querySelector(".exist_container").classList.add("visible");
-     setTimeout(() => {nav("/login")}, 4000);
+      setTimeout(() => {nav("/login")}, 4000);
       throw new Error('Something went wrong');
      }
-     return response.json()
+     if (response.status === 200) {
+      return response.json()  
+     }
   })
   .then(data => {
     window.localStorage.setItem('jwtToken', data.jwtToken)
@@ -120,14 +122,6 @@ function register() {
   .catch(error => console.log(error))
 }
 
-
-// if (response.status === 200) {
-//   return response.json()
-// } else {
-//  console.log("User already exist!") 
-//  document.querySelector(".exist_container").classList.add("visible")
-// }
-// })
    
   return (
     <div className="wrapper">
