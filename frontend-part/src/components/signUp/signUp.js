@@ -117,7 +117,7 @@ function register() {
   .then(data => {
     window.localStorage.setItem('jwtToken', data.jwtToken)
     nav("/profile_created")
-    // setTimeout(() => {nav("/list")}, 4000)
+    setTimeout(() => {nav("/list")}, 4000)
   })
   .catch(error => console.log(error))
 }
@@ -205,9 +205,9 @@ function register() {
           type="select" 
           >
             <option>Select nationality</option>
-            {country.map((element) => {
+            {country.map((element, index) => {
               return (
-                <option value={element.en_short_name} key={element.alpha_2_code}>
+                <option value={element.en_short_name} key={index}>
                   {element.en_short_name}
                  </option>
                  );
@@ -248,9 +248,9 @@ function register() {
           type="select"
             >
               <option>Select Language</option>
-              {languageList.map((element) => {
+              {languageList.map((element, index) => {
                 return (
-                 <option value={element.name} key={element.name}> {element.name}</option>
+                 <option value={element.name} key={index}> {element.name}</option>
     );
   })}
         </Form.Control>
@@ -268,9 +268,9 @@ function register() {
           type="select" 
             >
               <option>Select Level</option>
-            {levels.map((element) => {
+            {levels.map((element, index) => {
                 return (
-                  <option value={element.name} key={element.name}>{element.name}</option>
+                  <option value={element.name} key={index}>{element.name}</option>
                 )
               })}
         </Form.Control>
