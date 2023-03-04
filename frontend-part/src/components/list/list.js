@@ -14,7 +14,7 @@ function List() {
   const [error, setError] = useState("");
 
   useEffect(() => {
-    fetch("http://localhost:3000/users")
+    fetch("http://localhost:3001/users")
       .then(res => {
         if (!res.ok) {
           throw new Error("Something bad with connection");

@@ -85,7 +85,7 @@ function SignUp() {
 // }
 
 function register() {
-     fetch('http://localhost:3000/sign-up', {
+     fetch('http://localhost:3001/sign-up', {
       method: 'POST',
       headers: {
           'Content-Type': 'application/json'
