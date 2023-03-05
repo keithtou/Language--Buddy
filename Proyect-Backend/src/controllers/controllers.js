@@ -75,10 +75,35 @@ const createUser = async (req, res) => {
   }
 };
 
-//const sign_in = async (req, res) => {
-// const { email, password } = req.body;
-//console.log(email, password);
-//};
+const login = async (req, res) => {
+  const { email, password } = req.body;
+
+  try {
+    const user = await pool.query("SELECT * FROM user_info WHERE email = $1", [
+      email,
+    ]);
+
+    if (user.rows.length === 0) {
+      return res
+        .status(401)
+        .json({ error: "Invalid Credential", isAuthenticated: false });
+    }
+
+    const validPassword = await bcrypt.compare(password, user.rows[0].password);
+
+    if (!validPassword) {
+      return res
+        .status(401)
+        .json({ error: "Invalid Credential", isAuthenticated: false });
+    }
+    const jwtToken = jwtGenerator(user.rows[0].id);
+
+    return res.status(200).json({ jwtToken, isAuthenticated: true });
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).send("Server error");
+  }
+};
 
 const sign_in = async (req, res) => {
   let email = req.body.email;
@@ -104,5 +129,5 @@ module.exports = {
   getAll,
   getById,
   createUser,
-  sign_in,
+  login,
 };
