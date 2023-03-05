@@ -25,3 +25,13 @@
 
 
 }
+
+.exist_container {
+    visibility: hidden;
+}
+
+.exist_container.visible {
+    visibility:visible;
+    color: red;
+    text-align: center;
+}
