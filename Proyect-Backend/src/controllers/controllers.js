@@ -67,8 +67,11 @@ const createUser = async (req, res) => {
       description,
     ]);
 
-    const jwtToken = jwtGenerator(newUser.rows[0].user_id);
-    return res.json({ jwtToken });
+
+    //I changed a little because the field with newuser.id was empty and I could not get id
+    // const current_id = newUser.rows[0].id;
+    const jwtToken = jwtGenerator(newUser.rows[0].id);
+    return res.json({ jwtToken});
   } catch (error) {
     console.error(error.message);
     res.status(400).json(`this ${username} already exist!`);

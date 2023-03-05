@@ -85,7 +85,7 @@ function SignUp() {
 // }
 
 function register() {
-     fetch('http://localhost:3001/sign-up', {
+     fetch('http://localhost:4000/sign-up', {
       method: 'POST',
       headers: {
           'Content-Type': 'application/json'
@@ -115,9 +115,9 @@ function register() {
      }
   })
   .then(data => {
-    window.localStorage.setItem('jwtToken', data.jwtToken)
+    localStorage.setItem('jwtToken', data.jwtToken);
     nav("/profile_created")
-    setTimeout(() => {nav("/list")}, 4000)
+    setTimeout(() => {nav("/people")}, 4000)
   })
   .catch(error => console.log(error))
 }
