@@ -6,7 +6,7 @@ function DropdownButtons() {
     return (
         <DropdownButton id="dropdown-basic-button" title="Profile">
           <Dropdown.Item href="/profile">Profile</Dropdown.Item>
-          <Dropdown.Item href="/">Log out</Dropdown.Item>
+          <Dropdown.Item href="/" onClick={()=> localStorage.removeItem("jwtToken")}>Log out</Dropdown.Item>
         </DropdownButton>
       );
 }
