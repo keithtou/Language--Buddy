@@ -4,29 +4,48 @@ import { useEffect } from "react";
 import Button from "react-bootstrap/esm/Button";
 import Logo from "../logo/logo";
 import StudentCard from "../studentCard/studentCard";
-import Profile from "../profile/profile";
 import DropdownButtons from "../dropdownButtons/dropdownButtons";
+import { useNavigate } from "react-router-dom";
+
+
 
 
 function People() {
+  const nav = useNavigate("")
   const [students, setStudents] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
-  
+
+   //encode JWTtoken and get current id user
+   let token = localStorage.getItem("jwtToken");
+   let base64Url = token.split('.')[1];
+   let base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+   let jsonPayload = decodeURIComponent(window.atob(base64).split('').map(function(c) {
+         return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+     }).join(''));
+   let result = JSON.parse(jsonPayload)
+   let current_id = result.sub;
+
 
   useEffect( () => {
-     fetch("http://localhost:4000/users")
+     fetch("http://localhost:4000/users",  {
+      method: 'GET',
+      headers: {
+          'Content-Type': 'application/json',
+          'Authorization': "Bearer " + token
+      } 
+      })
       .then(res => {
         if (!res.ok) {
+          nav("/login")
           throw new Error("Something bad with connection");
         }
         return res.json();
       })
       .then(
         data => {
-          data.pop();
-          setStudents(data);
-          console.log(data)
+          const newArr = data.filter(el => el.id !== current_id);
+          setStudents(newArr);
           setLoading(false);
         },
         error => {
@@ -56,12 +75,7 @@ function People() {
                    )}
                 </div>
             
-      
-                
             
-
-      
-              
             </div>
         </div>
        

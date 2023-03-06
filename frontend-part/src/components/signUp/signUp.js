@@ -71,18 +71,9 @@ function SignUp() {
      setErrors(formErrors)
   } else {
     register();
-    console.log (form)
   }
  }
 
-
-
-
-// function handleBirthdayInput (event) {
-//   const tempDate = new Date(event.target.value);
-//   const formattedDate = [tempDate.getMonth() + 1, tempDate.getDate(), tempDate.getFullYear()].join('/');
-//   setBirth(formattedDate)
-// }
 
 function register() {
      fetch('http://localhost:4000/sign-up', {
@@ -117,7 +108,7 @@ function register() {
   .then(data => {
     localStorage.setItem('jwtToken', data.jwtToken);
     nav("/profile_created")
-    setTimeout(() => {nav("/people")}, 4000)
+    setTimeout(() => {nav("/login")}, 4000)
   })
   .catch(error => console.log(error))
 }
@@ -129,7 +120,7 @@ function register() {
       <Logo />
       <div className="signup__content">
          <h3>Create your profile</h3>
-         <h4 className='exist_container'>User already exist!</h4>
+         <h4 className="exist_container">User already exist!</h4>
     <Form >
           
       <Row className="mb-2">

@@ -11,26 +11,34 @@ import DropdownButtons from "../dropdownButtons/dropdownButtons";
 function Profile() {
   const nav = useNavigate();
 
-  //encode JWTtoken and get current id user
-  let token = localStorage.getItem("jwtToken");
-  let base64Url = token.split('.')[1];
-  let base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
-  let jsonPayload = decodeURIComponent(window.atob(base64).split('').map(function(c) {
-        return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
-    }).join(''));
-  let result = JSON.parse(jsonPayload)
-  let current_id = result.sub;
-  console.log(current_id)
-
   const [current_user, setCurrent] = useState({});
 
-useEffect( () => {
-    fetch(`http://localhost:4000/users/${current_id}`)
-     .then(res => res.json())
-     .then( data => {
-        console.log(data)
-        setCurrent(data)}
-        );
+   //encode JWTtoken and get current id user
+   let token = localStorage.getItem("jwtToken");
+   let base64Url = token.split('.')[1];
+   let base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+   let jsonPayload = decodeURIComponent(window.atob(base64).split('').map(function(c) {
+         return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+     }).join(''));
+   let result = JSON.parse(jsonPayload)
+   let current_id = result.sub;
+
+  useEffect( () => {
+    fetch(`http://localhost:4000/users/${current_id}`, {
+      method: 'GET',
+      headers: {
+          'Content-Type': 'application/json',
+          'Authorization': "Bearer " + token
+      } 
+      })
+     .then(res => {
+      if (!res.ok) {
+        nav("/login")
+        throw new Error("Something bad with connection");
+      }
+      return res.json();
+    })
+     .then(data => setCurrent(data));
  }, [current_id]);
 
     return (
