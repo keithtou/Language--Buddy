@@ -19,6 +19,7 @@ function App() {
               <Route path="/register" element={<SignUp />} />
               <Route path="/register" element={<SignUp />} />
               <Route path="/profile_created" element={<Profile_created />} />
+              <Route path="/footer" element={<Footer/>} />
       </Routes>
     </div>
    
