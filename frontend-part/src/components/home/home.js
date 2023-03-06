@@ -10,7 +10,7 @@ function Home() {
         <div>
             <Header></Header>
           <main>
-            <div className="wrapper">
+            <div className="wrapper" id="main">
               <div className="welcome_slider">
                 <h2>Welcome to Language Buddy</h2>
               </div>
