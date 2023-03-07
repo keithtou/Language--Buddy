@@ -5,8 +5,6 @@ import { useEffect, useState } from "react";
 import Logo from "../logo/logo";
 import DropdownButtons from "../dropdownButtons/dropdownButtons";
 import "./profile.css"
-import { languageList } from "../../data/languagesList";
-import { levels } from "../../data/levels";
 
 function Profile() {
   const nav = useNavigate();
@@ -41,7 +39,7 @@ function Profile() {
           }
           return res.json();
         })
-         .then(data => setCurrent(data));
+         .then((data) => setCurrent(data));
       } catch (err) {
         console.error(err);
       }
@@ -58,7 +56,6 @@ function Profile() {
   } 
   return age
 }
-
 
 
     return (
@@ -80,9 +77,9 @@ function Profile() {
                 <Card.Body>
                   <Card.Subtitle style={{fontSize: 30}} className="mb-4">Country: {current_user["nationality"]}</Card.Subtitle>
                   <Card.Subtitle style={{fontSize: 30}} className="mb-4">Age: {ageW(current_user["date_of_birth"])} </Card.Subtitle>
-                  <Card.Subtitle style={{fontSize: 30}} className="mb-6">Gender: {current_user["gender"]} </Card.Subtitle>
-                  {/* <Card.Subtitle style={{fontSize: 30}} className="mb-3">Language: {languageList.find(el => el.id === current_user.language).name} </Card.Subtitle>
-                  <Card.Subtitle style={{fontSize: 30}} className="mb-3">Language level: {levels.find(el => el.id === current_user.language_level).name} </Card.Subtitle> */}
+                  <Card.Subtitle style={{fontSize: 30}} className="mb-4">Gender: {current_user["gender"]} </Card.Subtitle>
+                  <Card.Subtitle style={{fontSize: 30}} className="mb-4">Language:  {current_user["language_name"]}</Card.Subtitle>
+                  <Card.Subtitle style={{fontSize: 30}} className="mb-4">Language level: {current_user["levels"]}</Card.Subtitle>
                 </Card.Body>
                 <Card.Footer> 
                   <Card.Text style={{fontSize: 30}}>Description:  {current_user["description"]}</Card.Text>

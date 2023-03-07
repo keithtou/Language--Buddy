@@ -80,6 +80,7 @@ function EditProfile() {
     if(Object.keys(formErrors).length > 0) {
        setErrors(formErrors)
     } else {
+        
       edit();
     }
    }
@@ -110,7 +111,9 @@ function EditProfile() {
        }
     })
     .then(data => {
-      nav("/people")
+        // console.log(data)
+        setCurrent(data)
+        nav("/profile")
     })
     .catch(error => console.log(error))
   }
