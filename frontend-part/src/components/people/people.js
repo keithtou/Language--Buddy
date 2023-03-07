@@ -88,10 +88,9 @@ function People() {
             ))
           )}
         </div>
-
-        <div>
-          <SearchFilter cards={state.card} />
-        </div>
+      </div>
+      <div>
+        <SearchFilter cards={state.card} />
       </div>
     </div>
   );
