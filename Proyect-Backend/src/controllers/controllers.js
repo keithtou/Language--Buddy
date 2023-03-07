@@ -10,7 +10,8 @@ const insertUser =
 
 const getAll = async (req, res) => {
   try {
-    await pool.query("SELECT * FROM user_info", (error, result) => {
+    await pool.query("SELECT * FROM user_info JOIN languages ON user_info.language=languages.id JOIN language_level  ON  language_level.id=user_info.language_level",
+     (error, result) => {
       res.json(result.rows);
     });
   } catch (error) {
@@ -22,7 +23,7 @@ const getById = async (req, res) => {
   const { id } = req.params;
   try {
     await pool.query(
-      "SELECT * FROM user_info WHERE id = $1",
+      "SELECT * FROM user_info JOIN languages ON user_info.language=languages.id JOIN language_level  ON  language_level.id=user_info.language_level WHERE user_info.id=$1",
       [id],
       (error, result) => {
         if (result.rows.length === 0) {
@@ -105,7 +106,7 @@ const login = async (req, res) => {
 
 const edit =  async(req, res) => {
     const id = req.params.id;
-
+  
     const newUsername = req.body.username;
     const newName = req.body.full_name;
     const newBirth = req.body.date_of_birth;
@@ -117,14 +118,13 @@ const edit =  async(req, res) => {
 
     try {
   
-    pool
-      .query("UPDATE user_info SET username=$1, full_name=$2, gender=$3, nationality=$4, language=$5, language_level=$6, description=$7, date_of_birth=$8 WHERE id=$9", 
+    let update_user = await pool
+      .query("UPDATE user_info SET username=$1, full_name=$2, gender=$3, nationality=$4, language=$5, language_level=$6, description=$7, date_of_birth=$8 WHERE id=$9 RETURNING *", 
       [newUsername, newName, newGender, newNationality, newLanguage, newLevel , newDescription, newBirth, id]);
-      
-      return res.status(200).json({ isAuthenticated: true });
+  
+      return res.status(200).json({user: update_user.rows[0]});
     } catch (error) {
       console.error(error.message);
-
     }
   };
     
