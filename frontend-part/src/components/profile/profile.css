@@ -1,0 +1,11 @@
+.profile_card {
+    width : 80%;
+    margin: 20px auto;
+}
+
+.edit_button {
+    width: 200px;
+    margin: 0 auto;
+    display: block;
+    
+}

@@ -6,6 +6,7 @@ import SignUp from './components/signUp/signUp';
 import Profile_created from './components/profile_created/profile_created';
 import People from "./components/people/people";
 import Profile from './components/profile/profile';
+import EditProfile from './components/editProfile/editProfile';
 
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
               <Route path="/register" element={<SignUp />} />
               <Route path="/profile_created" element={<Profile_created />} />
               <Route path="/profile" element={<Profile />} />
+              <Route path="/edit_profile" element={<EditProfile />} />
               <Route path="/people" element={<People />} />
       </Routes>
     </div>
