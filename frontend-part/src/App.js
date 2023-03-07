@@ -1,11 +1,10 @@
-import './App.css';
-import Home from './components/home/home';
-import { Routes, Route } from 'react-router-dom';
-import SignIn from './components/signIn/signIn';
-import SignUp from './components/signUp/signUp';
-import Profile_created from './components/profile_created/profile_created';
+import "./App.css";
+import Home from "./components/home/home";
+import { Routes, Route } from "react-router-dom";
+import SignIn from "./components/signIn/signIn";
+import SignUp from "./components/signUp/signUp";
+import Profile_created from "./components/profile_created/profile_created";
 import List from "./components/list/list";
-
 function App() {
   return (
     <div>
