@@ -1,9 +1,17 @@
-import Button from 'react-bootstrap/Button';
-import Card from 'react-bootstrap/Card';
+import Button from "react-bootstrap/Button";
+import Card from "react-bootstrap/Card";
 import "./studentCard.css";
 import image from "../../images/Profile-PNG-File.png"
 
+
 function StudentCard(props) {
+  let languageName = languageList.find(
+    (el) => el.id === props.students["language"]
+  ).name;
+  let languageLevel = levels.find(
+    (el) => el.id === props.students["language_level"]
+  ).name;
+
 
   return (
     <Card className="student_card" id={props.students["id"]}>
@@ -13,7 +21,9 @@ function StudentCard(props) {
         <Card.Subtitle className="mb-2 text-muted">{props.students["nationality"]}</Card.Subtitle>
         <Card.Subtitle className="mb-3 text-muted">{props.students["language_name"]} - {props.students["levels"]}</Card.Subtitle>
         <Card.Text>{props.students["description"]}</Card.Text>
-        <Button className="button send_button" type="submit">Send Request</Button>
+        <Button className="button send_button" type="submit">
+          Send Request
+        </Button>
       </Card.Body>
     </Card>
   );
