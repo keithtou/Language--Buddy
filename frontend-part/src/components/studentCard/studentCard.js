@@ -5,13 +5,6 @@ import image from "../../images/Profile-PNG-File.png"
 
 
 function StudentCard(props) {
-  let languageName = languageList.find(
-    (el) => el.id === props.students["language"]
-  ).name;
-  let languageLevel = levels.find(
-    (el) => el.id === props.students["language_level"]
-  ).name;
-
 
   return (
     <Card className="student_card" id={props.students["id"]}>

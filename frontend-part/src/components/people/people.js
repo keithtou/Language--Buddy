@@ -89,9 +89,9 @@ function People() {
           )}
         </div>
       </div>
-      <div>
+      {/* <div>
         <SearchFilter cards={state.card} />
-      </div>
+      </div> */}
     </div>
   );
 }
