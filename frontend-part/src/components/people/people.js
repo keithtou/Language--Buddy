@@ -28,7 +28,8 @@ function People() {
 
 
   useEffect( () => {
-     fetch("http://localhost:4000/users",  {
+     (async () => {
+      await fetch("http://localhost:4000/users",  {
       method: 'GET',
       headers: {
           'Content-Type': 'application/json',
@@ -52,8 +53,8 @@ function People() {
           setError(error.toString());
           console.log(error);
           setLoading(false);
-        }
-      );
+        })
+      })();
   }, []);
 
     return (

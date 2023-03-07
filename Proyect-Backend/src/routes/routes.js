@@ -6,6 +6,7 @@ const {
   getById,
   createUser,
   login,
+  edit,
   auth,
 } = require("../controllers/controllers");
 
@@ -18,6 +19,8 @@ router.get("/users/:id", authenticate, getById);
 router.post("/sign-up", createUser);
 
 router.post("/sign-in", login);
+
+router.put("/users/:id", authenticate, edit);
 
 router.post("/auth", authenticate, auth);
 

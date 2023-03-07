@@ -26,8 +26,8 @@ function SignIn() {
    }
   
 
-function login() {
-      fetch('http://localhost:4000/sign-in', {
+async function login() {
+      await fetch('http://localhost:4000/sign-in', {
       method: 'POST',
       headers: {
           'Content-Type': 'application/json'
@@ -51,7 +51,6 @@ function login() {
     nav("/people");
   })
   .catch(error => console.log(error))
-
 }
 
   return (

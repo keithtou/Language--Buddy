@@ -103,6 +103,31 @@ const login = async (req, res) => {
   }
 };
 
+const edit =  async(req, res) => {
+    const id = req.params.id;
+
+    const newUsername = req.body.username;
+    const newName = req.body.full_name;
+    const newBirth = req.body.date_of_birth;
+    const newGender = req.body.gender;
+    const newNationality = req.body.nationality;
+    const newLanguage = req.body.language;
+    const newLevel= req.body.language_level;
+    const newDescription = req.body.description;
+
+    try {
+  
+    pool
+      .query("UPDATE user_info SET username=$1, full_name=$2, gender=$3, nationality=$4, language=$5, language_level=$6, description=$7, date_of_birth=$8 WHERE id=$9", 
+      [newUsername, newName, newGender, newNationality, newLanguage, newLevel , newDescription, newBirth, id]);
+      
+      return res.status(200).json({ isAuthenticated: true });
+    } catch (error) {
+      console.error(error.message);
+
+    }
+  };
+    
 // const sign_in = async (req, res) => {
 //   let email = req.body.email;
 //   let password = req.body.password;
@@ -139,5 +164,6 @@ module.exports = {
   getById,
   createUser,
   login,
+  edit,
   auth,
 };

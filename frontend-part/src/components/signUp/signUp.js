@@ -75,8 +75,8 @@ function SignUp() {
  }
 
 
-function register() {
-     fetch('http://localhost:4000/sign-up', {
+async function register() {
+     await fetch('http://localhost:4000/sign-up', {
       method: 'POST',
       headers: {
           'Content-Type': 'application/json'
@@ -113,7 +113,6 @@ function register() {
   .catch(error => console.log(error))
 }
 
-   
   return (
     <div className="wrapper">
     <div className="signup_wrapper">
