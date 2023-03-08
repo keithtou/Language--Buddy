@@ -22,6 +22,7 @@ const getAll = async (req, res) => {
 const getById = async (req, res) => {
   const { id } = req.params;
   try {
+
     await pool.query(
       "SELECT * FROM user_info JOIN languages ON user_info.language=languages.id JOIN language_level  ON  language_level.id=user_info.language_level WHERE user_info.id=$1",
       [id],
@@ -127,7 +128,18 @@ const edit =  async(req, res) => {
       console.error(error.message);
     }
   };
-    
+
+  const delete_user = async (req, res) => {
+    const { id } = req.params;
+
+    try { 
+      await pool.query( "DELETE FROM user_info WHERE id=$1", [id])
+      .then(() => res.send(`User ${id} deleted!`))  
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+
 // const sign_in = async (req, res) => {
 //   let email = req.body.email;
 //   let password = req.body.password;
@@ -165,5 +177,6 @@ module.exports = {
   createUser,
   login,
   edit,
+  delete_user,
   auth,
 };

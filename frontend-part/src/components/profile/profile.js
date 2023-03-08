@@ -5,11 +5,16 @@ import { useEffect, useState } from "react";
 import Logo from "../logo/logo";
 import DropdownButtons from "../dropdownButtons/dropdownButtons";
 import "./profile.css"
+import DeleteProfileModal from "../deleteProfile/deleteProfile"; 
 
 function Profile() {
   const nav = useNavigate();
 
   const [current_user, setCurrent] = useState({});
+
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
 
    //encode JWTtoken and get current id user
@@ -86,10 +91,12 @@ function Profile() {
                 </Card.Footer>
               </Card>
                
-                
-                <Button className="button edit_button" onClick={()=> nav("/edit_profile")}>Edit profile</Button>
-            
-                    
+                <div className="profile_button_container">
+                  <Button className="button edit_button" onClick={()=> nav("/edit_profile")}>Edit profile</Button>
+                  <Button className="button delete_button" onClick={handleShow}>Delete profile and data</Button>
+                </div> 
+
+                <DeleteProfileModal handleClose={handleClose} show={show} />  
                   
             </div>
          </div>

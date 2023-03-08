@@ -7,6 +7,7 @@ const {
   createUser,
   login,
   edit,
+  delete_user,
   auth,
 } = require("../controllers/controllers");
 
@@ -21,6 +22,8 @@ router.post("/sign-up", createUser);
 router.post("/sign-in", login);
 
 router.put("/users/:id", authenticate, edit);
+
+router.delete("/users/:id", authenticate, delete_user);
 
 router.post("/auth", authenticate, auth);
 
