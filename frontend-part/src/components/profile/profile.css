@@ -3,9 +3,19 @@
     margin: 20px auto;
 }
 
+
+.profile_button_container {
+   display: flex;
+   justify-content: space-around;
+   flex-wrap: wrap;
+   margin-top: 50px;
+}
+
 .edit_button {
-    width: 200px;
-    margin: 0 auto;
-    display: block;
-    
+    width: 200px;   
+}
+
+.delete_button {
+    width: 300px; 
+    background-color: rgb(225, 55, 55);  
 }
