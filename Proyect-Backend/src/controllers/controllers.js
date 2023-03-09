@@ -69,7 +69,6 @@ const createUser = async (req, res) => {
       description,
     ]);
 
-
     //I changed a little because the field with newuser.id was empty and I could not get id
     // const current_id = newUser.rows[0].id;
     const jwtToken = jwtGenerator(newUser.rows[0].id);
