@@ -14,6 +14,8 @@ function People() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
+  console.log(students);
+
   //encode JWTtoken and get current id user
   let token = localStorage.getItem("jwtToken");
   let base64Url = token.split(".")[1];
@@ -83,14 +85,12 @@ function People() {
           ) : error != "" ? (
             <p>{error}</p>
           ) : (
-            students.map((student, index) => (
-              <StudentCard students={student} key={index} />
-            ))
+            <SearchFilter students={students} />
           )}
         </div>
       </div>
       {/* <div>
-        <SearchFilter cards={state.card} />
+        <SearchFilter cards={scard} />
       </div> */}
     </div>
   );
