@@ -17,7 +17,7 @@ function authenticate(req, res, next) {
 
   try {
     const verify = jwt.verify(token, process.env.jwtSecret);
-    req.user = verify.user;
+    req.user = { id: verify.sub } 
 
     next();
 
