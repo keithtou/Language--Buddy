@@ -4,7 +4,6 @@ const bodyParser = require("body-parser");
 const express = require("express");
 const morgan = require("morgan");
 const cors = require("cors");
-
 const app = express();
 
 // Middlewares
@@ -21,8 +20,6 @@ app.use(routes);
 app.get("/", (req, res) => {
   res.json({ message: "Welcome to language buddy Migracode!!!." });
 });
-
-
 
 const PORT = process.env.PORT || 4000;
 app.listen(PORT, () => {
