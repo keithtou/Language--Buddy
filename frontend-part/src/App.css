@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400&display=swap');
+
 html {
   box-sizing: border-box;
   overflow-x: hidden;
@@ -12,7 +14,7 @@ html {
 }
 
 body {
-  font-family: 'Quicksand';
+  font-family: 'Nunito', sans-serif;
   font-style: normal;
   font-weight: 500;
   background-image: url("./images/back.png");

@@ -109,7 +109,7 @@ async function register() {
   .then(data => {
     localStorage.setItem('jwtToken', data.jwtToken);
     nav("/profile_created")
-    setTimeout(() => {nav("/login")}, 4000)
+    setTimeout(() => {nav("/people");}, 4000)
   })
   .catch(error => console.log(error))
 }
