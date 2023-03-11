@@ -234,9 +234,7 @@ const connections = async (req, res) => {
             [id, id],
       (error, result) => {
         if (result.rows.length === 0) {
-          return res.status(404).json({
-            message: "User not exits!!"
-          });
+          return res.status(200).json([]);
         }
         res.json(result.rows);
       }
