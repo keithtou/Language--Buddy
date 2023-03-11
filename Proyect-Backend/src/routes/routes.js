@@ -11,6 +11,10 @@ const {
   edit,
   delete_user,
   auth,
+  connections,
+  createConnection,
+  updateConnection,
+  deleteConnection
 } = require("../controllers/controllers");
 
 const router = Router();
@@ -28,5 +32,13 @@ router.put("/users/:id", authenticate, edit);
 router.delete("/users/:id", authenticate, delete_user);
 
 router.post("/auth", authenticate, auth);
+
+router.get("/connections", authenticate, connections);
+
+router.post("/connections", authenticate, createConnection);
+
+router.put("/connections/:id", authenticate, updateConnection);
+
+router.delete("/connections/:id", authenticate, deleteConnection);
 
 module.exports = router;
