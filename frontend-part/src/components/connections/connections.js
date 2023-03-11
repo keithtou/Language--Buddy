@@ -6,7 +6,6 @@ import { useNavigate } from "react-router-dom";
 import Button from "react-bootstrap/esm/Button";
 
 
-
 function Connections() {
   const nav = useNavigate("");
 
