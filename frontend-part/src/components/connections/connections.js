@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import StudentHeader from "../studentHeader/studentHeader";
 import { useNavigate } from "react-router-dom";
 import Button from "react-bootstrap/esm/Button";
+import Card from "react-bootstrap/Card";
 
 
 function Connections() {
@@ -112,55 +113,70 @@ function Connections() {
   return (
     <div>
       <div className="wrapper">
-         < StudentHeader />
+        < StudentHeader />
         
-         <div className="send_container">
-            <div>Sent requests</div>
-           {requests.filter(el => el.status == "pending" && el.requester_id == current_id).map((el, index) => (
-             <div id={el.id} key={index}  className="sent_card">
-               <div > {el.responder_username}</div>
-               <Button className="button " type="submit" onClick={() => deleteConnection(el.id)}> Delete</Button>
-          </div>
-           ))} 
+        <div>
+          <h4>Sent requests</h4>
+          <div className="sent_container">
+          {requests.filter(el => el.status == "pending" && el.requester_id == current_id).map((el, index) => (
+               <Card className="sent_card" id={el.id} key={index}>
+                <Card.Body className="sent_body">
+                <Card.Title className="sent_title">{el.responder_username}</Card.Title>
+                <Card.Subtitle className="mb-2 text-muted"></Card.Subtitle>
+                <Card.Subtitle className="mb-3 text-muted"></Card.Subtitle>
+                </Card.Body>
+                <Button className="button" type="submit" onClick={() => deleteConnection(el.id)}> Delete</Button>
+              </Card>
+               ))}
+        </div>
         </div>
 
-
-        <div>_________</div>
-
-
-  
-         <div className="inbox_container">
-            <div>Incoming requests</div>
+        <div>
+            <h4>Incoming requests</h4>
+            <div className="inbox_container">
              {requests.filter(el => el.status == "pending" && el.responder_id == current_id).map((el, index) => (
-             <div key={index}  className="inbox_card">
-               <div> {el.responder_username}</div>
-               <Button className="button " type="submit" onClick={() => updateConnection(el.id, 'approved')}> Accept</Button>
-               <Button className="button " type="submit" onClick={() => updateConnection(el.id, 'rejected')}> Reject</Button>
-          </div>
-           ))} 
+                  <Card key={index}  className="inbox_card">
+                  <Card.Body className="inbox_body">
+                  <Card.Title className="inbox_title">{el.responder_username}</Card.Title>
+                  <Card.Subtitle className="mb-2 text-muted"></Card.Subtitle>
+                  <Card.Subtitle className="mb-3 text-muted"></Card.Subtitle>
+                  </Card.Body>
+                  <div className="response-container">
+                    <Button className="button " type="submit" onClick={() => updateConnection(el.id, 'approved')}> Accept</Button>
+                    <Button className="button " type="submit" onClick={() => updateConnection(el.id, 'rejected')}> Reject</Button>
+                  </div>
+                 
+                </Card>
+
+
+
+                  ))} 
+            </div> 
+        </div>
+
+        <div>
+             <h4>Buddies</h4>
+             <div className="buddy_container">
+                {requests.filter(el => el.status == "approved").map((el) => (
+                   (el.responder_id  == current_id) ?  (
+                    <Card className="buddy_card" key={Math.random()}>
+                      <Card.Body className="buddy_body">
+                      <Card.Title className="buddy_title">{el.requester_username}</Card.Title>
+                      <Card.Subtitle className="mb-2 text-muted">{el.requester_email}</Card.Subtitle>
+                      <Card.Subtitle className="mb-3 text-muted"></Card.Subtitle>
+                    </Card.Body>
+                  </Card>
+                   ) : ( 
+                  <Card className="buddy_card" key={Math.random()}>
+                    <Card.Body className="buddy_body">
+                    <Card.Title className="buddy_title"> {el.responder_username}</Card.Title>
+                    <Card.Subtitle className="mb-2 text-muted">{el.responder_email}</Card.Subtitle>
+                    <Card.Subtitle className="mb-3 text-muted"></Card.Subtitle>
+                    </Card.Body>
+                  </Card>
+                )  
+              ))} 
             </div>
-
-          <div>_________</div>
-
-         <div className="result_container">
-
-         <div>Buddies</div>
-         {requests.filter(el => el.status == "approved").map((el, index) => (
-          <div key={index}>
-              { (el.responder_id  == current_id) ?  (
-
-              <div className="buddy_card">  
-              <div> {el.requester_username}</div> 
-              <div> Email :{el.requester_email}</div> 
-              </div>
-              ) : ( 
-              <div className="buddy_card"> 
-                    <div>  {el.responder_username}</div>
-                     <div>Email: {el.responder_email}</div>
-               </div>
-              )}
-         </div> 
-         ))} 
         </div>
 
       </div>

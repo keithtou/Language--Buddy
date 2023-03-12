@@ -1,33 +1,105 @@
-.send_container {
-    background-color: green;
+h4 {
+    font-weight: 700;
+    font-size: 48px;
+    line-height: 60px;
+    text-align: center;
+    letter-spacing: -0.015em;
+    color: #0297A6;
+    padding: 20px 0;
+}
+
+.sent_container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .sent_card {
+    width: 350px;
+    /* height: 200px; */
+    background: #FFF8F8;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 36px;
     display: flex;
-    justify-content: space-between;
-    border-style: double;
+    align-items: center;
+    padding: 10px;
 }
 
-.sent_card.hidden {
-   visibility: hidden;
-}
 
 .inbox_container {
-    background-color: yellow;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .inbox_card {
+    min-width: 350px;
+    /* height: 500px; */
+    background: #FFF8F8;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 36px;
     display: flex;
-    justify-content: space-between;
-    border-style: double;
+    align-items: center;
+    justify-content: center;
 }
 
-.result_container {
-    background-color: aqua;
+
+.inbox_body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
+
+.response-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 0;
+}
+
+
+
+
+
+
+
+.buddy_container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+}
+
 
 .buddy_card {
+    min-width: 350px;
+    /* height: 500px; */
+    background: #FFF8F8;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 36px;
     display: flex;
-    justify-content: space-between;
-    border-style: double;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.buddy_body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.buddy_title {
+    font-size: 30px;
+    color: brown;
+}
+
+
+.send_button {
+    width: 230px;
 }
