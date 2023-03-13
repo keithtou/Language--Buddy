@@ -17,6 +17,7 @@ function EditProfile() {
 
     const [errors, setErrors] = useState({});
     const [current_user, setCurrent] = useState({});
+    console.log(current_user)
 
     const [form, setForm] = useState({});
 
@@ -64,6 +65,7 @@ function EditProfile() {
       if(!fullname || fullname === "") newErrors.fullname = "Please enter your fullname"
       else if( /^[a-zA-Z ]*$/.test(fullname) != true) newErrors.fullname = "Please enter correct fullname"
       if(!username || username === "") newErrors.username = "Please enter your username"
+      else if( username.length > 13) newErrors.username = "Your username must be contain at most 13 characters"
       if(!gender || gender === "Select Gender") newErrors.gender = "Please enter your gender"
       if(!language || language === "Select Language") newErrors.language = "Please enter your language"
       if(!level || level === "Select Level") newErrors.level = "Please enter your level"

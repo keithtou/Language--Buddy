@@ -50,6 +50,7 @@ function SignUp() {
     if(!fullname || fullname === "") newErrors.fullname = "Please enter your fullname"
     else if( /^[a-zA-Z ]*$/.test(fullname) != true) newErrors.fullname = "Please enter correct fullname"
     if(!username || username === "") newErrors.username = "Please enter your username"
+    else if( username.length > 13) newErrors.username = "Your username must be contain at most 13 characters"
     if(!email || email === "") newErrors.email = "Please enter your email"
     else if(  /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email) != true) newErrors.email = "Please enter correct email format"
     if(!password || password === "") newErrors.password = "Please enter your password"
@@ -108,7 +109,7 @@ async function register() {
   .then(data => {
     localStorage.setItem('jwtToken', data.jwtToken);
     nav("/profile_created")
-    setTimeout(() => {nav("/login")}, 4000)
+    setTimeout(() => {nav("/people");}, 4000)
   })
   .catch(error => console.log(error))
 }
