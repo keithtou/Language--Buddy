@@ -99,7 +99,6 @@ async function register() {
   .then((response) => {
      if (response.status === 400) {
       document.querySelector(".exist_container").classList.add("visible");
-      setTimeout(() => {nav("/login")}, 4000);
       throw new Error('Something went wrong');
      }
      if (response.status === 200) {
@@ -120,7 +119,7 @@ async function register() {
       <Logo />
       <div className="signup__content">
          <h3>Create your profile</h3>
-         <h4 className="exist_container">User already exist!</h4>
+         <h4 className="exist_container">Username or email already exist!</h4>
     <Form   >
           
       <Row className="mb-2">
