@@ -121,7 +121,7 @@ async function register() {
       <div className="signup__content">
          <h3>Create your profile</h3>
          <h4 className="exist_container">User already exist!</h4>
-    <Form >
+    <Form   >
           
       <Row className="mb-2">
         <Form.Group as={Col} controlId="fullname">
