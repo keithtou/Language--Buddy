@@ -12,7 +12,7 @@ function Header() {
             <div className="wrapper">
                 <div className="header__content">
                     <div className="logo">
-                       <img src={logo} width="110" height="88" />
+                       <img src={logo} width="110" height="88" onClick={() => nav("/")} />
                     </div>
                     <div className="buttons_wrapper"> 
                     <Button className="button create_button" type="submit" onClick={() => nav("/register", {replace: true})}>Register</Button>
