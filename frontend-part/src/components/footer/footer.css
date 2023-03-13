@@ -24,6 +24,8 @@ ul {
 
 .copyright {
   text-align: center;
+  color: white;
+  
 }
 
 .logos ul {
@@ -35,8 +37,15 @@ ul {
 
 .occ, .lab{
   padding-right: 20px;
+  margin-top: 20px;
+
 }
 
 nav a, .language-selector p{
   color: white;
+}
+
+nav ul li a:hover {
+  color: #a64602;
+  transition-delay:.1s ;
 }

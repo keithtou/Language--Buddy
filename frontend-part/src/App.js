@@ -7,6 +7,8 @@ import Profile_created from "./components/profile_created/profile_created";
 import People from "./components/people/people";
 import Profile from "./components/profile/profile";
 import EditProfile from "./components/editProfile/editProfile";
+import Aboutus from "./components/aboutus/aboutus";
+import FAQ from "./components/FAQ/FAQ";
 import Connections from "./components/connections/connections";
 
 function App() {
@@ -20,6 +22,8 @@ function App() {
         <Route path="/profile" element={<Profile />} />
         <Route path="/edit_profile" element={<EditProfile />} />
         <Route path="/people" element={<People />} />
+        <Route path="/aboutus" element={<Aboutus/>} />
+        <Route path="/FAQ" element={<FAQ/>} />
         <Route path="/connections" element={< Connections />} />
       </Routes>
     </div>
