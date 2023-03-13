@@ -115,8 +115,9 @@ function Connections() {
       <div className="wrapper">
         < StudentHeader />
         
-        <div>
-          <h4>Sent requests</h4>
+        <div className="connections_container">
+        <div >
+          <h4 className="connections_name">Sent requests</h4>
           <div className="sent_container">
           {requests.filter(el => el.status == "pending" && el.requester_id == current_id).map((el, index) => (
                <Card className="sent_card" id={el.id} key={index}>
@@ -132,7 +133,7 @@ function Connections() {
         </div>
 
         <div>
-            <h4>Incoming requests</h4>
+            <h4 className="connections_name">Incoming requests</h4>
             <div className="inbox_container">
              {requests.filter(el => el.status == "pending" && el.responder_id == current_id).map((el, index) => (
                   <Card key={index}  className="inbox_card">
@@ -155,7 +156,7 @@ function Connections() {
         </div>
 
         <div>
-             <h4>Buddies</h4>
+             <h4 className="connections_name">Buddies</h4>
              <div className="buddy_container">
                 {requests.filter(el => el.status == "approved").map((el) => (
                    (el.responder_id  == current_id) ?  (
@@ -177,6 +178,8 @@ function Connections() {
                 )  
               ))} 
             </div>
+        </div>
+
         </div>
 
       </div>

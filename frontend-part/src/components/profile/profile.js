@@ -67,34 +67,30 @@ function Profile() {
         <div>
             <div className="wrapper">
               < StudentHeader />
-              
-              <Card className="profile_card">
-                <Card.Header>
-                  <Card.Title style={{fontSize: 30}}>full name : {current_user["full_name"]}</Card.Title>
-                  <Card.Title style={{fontSize: 30}}>username : {current_user["username"]}</Card.Title>
-                </Card.Header>
-                <Card.Body>
-                  <Card.Subtitle style={{fontSize: 30}} className="mb-4">Country: {current_user["nationality"]}</Card.Subtitle>
-                  <Card.Subtitle style={{fontSize: 30}} className="mb-4">Age: {ageW(current_user["date_of_birth"])} </Card.Subtitle>
-                  <Card.Subtitle style={{fontSize: 30}} className="mb-4">Gender: {current_user["gender"]} </Card.Subtitle>
-                  <Card.Subtitle style={{fontSize: 30}} className="mb-4">Language:  {current_user["language_name"]}</Card.Subtitle>
-                  <Card.Subtitle style={{fontSize: 30}} className="mb-4">Language level: {current_user["levels"]}</Card.Subtitle>
-                </Card.Body>
-                <Card.Footer> 
-                  <Card.Text style={{fontSize: 30}}>Description:  {current_user["description"]}</Card.Text>
-                </Card.Footer>
-              </Card>
-               
-                <div className="profile_button_container">
-                  <Button className="button edit_button" onClick={()=> nav("/edit_profile")}>Edit profile</Button>
-                  <Button className="button delete_button" onClick={handleShow}>Delete profile and data</Button>
-                </div> 
 
-                <DeleteProfileModal handleClose={handleClose} show={show} />  
+              <div className="profile_container">
+                 <Card className="profile_card" >
+                     <Card.Body className="profile_body">
+                        <Card.Title className="card_title"> FULL NAME:  {current_user["full_name"]}</Card.Title> 
+                        <Card.Title className="card_title">USERNAME: {current_user["username"]}</Card.Title>
+                        <Card.Subtitle className="mb-2 text-muted">COUNTRY: {current_user["nationality"]}</Card.Subtitle>
+                        <Card.Subtitle className="mb-2 text-muted">AGE: {ageW(current_user["date_of_birth"])}</Card.Subtitle>
+                        <Card.Subtitle className="mb-2 text-muted">GENDER: {current_user["gender"]}</Card.Subtitle>
+                        <Card.Subtitle className="mb-3 text-muted">{current_user["language_name"]} - {current_user["levels"]}</Card.Subtitle>
+                        <Card.Text>DESCRIPTION: {current_user["description"]}</Card.Text>
+                     </Card.Body>
+                  </Card>
+                  
+                  <div className="profile_button_container">
+                    <Button className="button edit_button" onClick={()=> nav("/edit_profile")}>Edit profile</Button>
+                    <Button className="button delete_button" onClick={handleShow}>Delete profile and data</Button>
+                  </div> 
+              </div>
+        
+              <DeleteProfileModal handleClose={handleClose} show={show} />  
                   
             </div>
-         </div>
-       
+        </div>    
     )
 }
 

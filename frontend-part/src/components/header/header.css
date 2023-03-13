@@ -4,7 +4,6 @@ header {
   left: 0;
   width: 100%;
   height: 110px;
-  z-index: 1;
   background-color: #0297a6;
 }
 
@@ -21,7 +20,6 @@ header {
 .buttons_wrapper {
   display: flex;
   justify-content: right;
-  /* align-items: center; */
 }
 
 .create_button {

@@ -1,4 +1,6 @@
 import "./App.css";
+// import 'bootstrap/dist/css/bootstrap.min.css'; 
+
 import Home from "./components/home/home";
 import { Routes, Route } from "react-router-dom";
 import SignIn from "./components/signIn/signIn";
