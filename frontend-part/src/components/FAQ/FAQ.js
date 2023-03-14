@@ -9,7 +9,7 @@ function FAQ () {
             <Header></Header>
         <div>
     
-        <div className="faq wrapper">
+        <div className="wrapper">
             <div className="faq">
 
             <p> 

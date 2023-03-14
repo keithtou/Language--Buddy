@@ -25,7 +25,7 @@ function App() {
         <Route path="/edit_profile" element={<EditProfile />} />
         <Route path="/people" element={<People />} />
         <Route path="/aboutus" element={<Aboutus/>} />
-        <Route path="/FAQ" element={<FAQ/>} />
+        <Route path="/faq" element={<FAQ/>} />
         <Route path="/connections" element={< Connections />} />
       </Routes>
     </div>
