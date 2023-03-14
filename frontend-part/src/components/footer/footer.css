@@ -42,12 +42,13 @@ ul {
 
 }
 
-nav a,
+nav a, nav li,
 .language-selector p {
   color: white;
 }
 
-nav ul li a:hover {
+nav ul li a:hover, nav ul li:hover {
   color: #a64602;
-  transition-delay: .1s;
+  cursor: pointer;
+  text-decoration:none
 }
