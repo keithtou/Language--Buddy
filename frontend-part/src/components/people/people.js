@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import StudentHeader from "../studentHeader/studentHeader";
 import { useNavigate } from "react-router-dom";
 import SearchFilter from "../filter/SearchFilter";
+import config from '../../config'
 
 function People() {
   const nav = useNavigate("");

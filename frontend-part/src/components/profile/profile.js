@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import "./profile.css"
 import DeleteProfileModal from "../deleteProfile/deleteProfile"; 
 import StudentHeader from "../studentHeader/studentHeader"
+import config from '../../config'
 
 
 function Profile() {

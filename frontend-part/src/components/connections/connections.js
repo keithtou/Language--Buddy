@@ -5,6 +5,7 @@ import StudentHeader from "../studentHeader/studentHeader";
 import { useNavigate } from "react-router-dom";
 import Button from "react-bootstrap/esm/Button";
 import Card from "react-bootstrap/Card";
+import config from '../../config'
 
 
 function Connections() {

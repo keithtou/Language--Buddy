@@ -3,6 +3,7 @@ import Card from "react-bootstrap/Card";
 import "./studentCard.css";
 // import image from "../../images/Profile-PNG-File.png"
 import { useNavigate } from "react-router-dom";
+import config from '../../config'
 
 
 function StudentCard(props) {

@@ -11,6 +11,7 @@ import {country } from "../../data/country";
 import {languageList } from "../../data/languagesList";
 import {levels} from "../../data/levels";
 import Logo from '../logo/logo';
+import config from '../../config'
 
 
 function EditProfile() {
