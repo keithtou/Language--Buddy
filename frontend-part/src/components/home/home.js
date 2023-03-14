@@ -7,9 +7,9 @@ function Home() {
     return (
         <>
             <Header></Header>
-          <main>
+          <main style={{backgroundColor: 'white'}}>
             <div className="wrapper" >          
-              <div  id="main">
+              <div  id="main"  >
                  < Image className='img-fluid shadow-4' src ="https://transnationalmigrantplatform.net/wp-content/uploads/2021/07/Building-a-New-Narrative-Cover-1-scaled.jpg"/>
              </div>
             </div> 

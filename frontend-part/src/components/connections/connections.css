@@ -1,5 +1,6 @@
 .connections_container {
-    padding: 20px
+    padding: 20px;
+    height: 100vh;
 }
 
 .connections_name {

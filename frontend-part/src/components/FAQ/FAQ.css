@@ -1,3 +1,8 @@
+.faq {
+  max-width: 1000px;
+  padding: 200px 100px 0;
+  height: 100vh;
+}
 
 .faq p{
     font-size: 25px;
@@ -6,6 +11,5 @@
     letter-spacing: -0.04em;
     color: #c85517;
     display: block;
-    margin-top: 200px;
   }
 

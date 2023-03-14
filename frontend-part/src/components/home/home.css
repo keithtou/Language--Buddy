@@ -1,5 +1,6 @@
 
 #main {
-  height: calc(100vh -110px); 
-  margin-top: 105PX;
+  height: 100vh; 
+  padding-top: 105PX;
+
 }
