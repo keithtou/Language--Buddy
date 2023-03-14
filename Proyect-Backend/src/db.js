@@ -12,6 +12,9 @@ const pool = new Pool({
   host: dHost,
   database: dName,
   port: dPort,
+  ssl: {
+    rejectUnauthorized: false
+  }
 });
 console.log(pool);
 
