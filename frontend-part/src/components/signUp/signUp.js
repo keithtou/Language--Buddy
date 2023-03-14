@@ -10,6 +10,7 @@ import {country } from "../../data/country";
 import {languageList } from "../../data/languagesList";
 import {levels} from "../../data/levels";
 import Logo from '../logo/logo';
+import config from '../../config'
 
 function SignUp() {
   const nav = useNavigate();
@@ -77,7 +78,7 @@ function SignUp() {
 
 
 async function register() {
-     await fetch('http://localhost:4000/sign-up', {
+     await fetch(`${config.baseUrl}/sign-up`, {
       method: 'POST',
       headers: {
           'Content-Type': 'application/json'
