@@ -27,7 +27,7 @@ function SignIn() {
   
 
 async function login() {
-      await fetch('http://localhost:4000/sign-in', {
+      await fetch(`${config.baseUrl}/sign-in`, {
       method: 'POST',
       headers: {
           'Content-Type': 'application/json'

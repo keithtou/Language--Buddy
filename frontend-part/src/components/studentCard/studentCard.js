@@ -13,7 +13,7 @@ function StudentCard(props) {
   let token = localStorage.getItem("jwtToken");
 
   async function createConnection(id) {
-    await fetch('http://localhost:4000/connections', {
+    await fetch(`${config.baseUrl}/connections`, {
      method: 'POST',
      headers: {
          'Content-Type': 'application/json',

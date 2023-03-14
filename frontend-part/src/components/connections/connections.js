@@ -31,7 +31,7 @@ function Connections() {
 
   const deleteConnection =  async (id) => {
     console.log(requests);
-      await fetch(`http://localhost:4000/connections/${id}`, {
+      await fetch(`${config.baseUrl}/connections/${id}`, {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",
@@ -56,7 +56,7 @@ function Connections() {
     console.log(requests);
 
     const updateConnection =  async (id, status) => {
-        await fetch(`http://localhost:4000/connections/${id}`, {
+        await fetch(`${config.baseUrl}/connections/${id}`, {
           method: "PUT",
           headers: {
             "Content-Type": "application/json",
@@ -84,7 +84,7 @@ function Connections() {
 
   useEffect(() => {
     (async () => {
-      await fetch("http://localhost:4000/connections", {
+      await fetch( `${config.baseUrl}/connections`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",

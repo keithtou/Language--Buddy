@@ -29,7 +29,7 @@ function People() {
 
   useEffect(() => {
     (async () => {
-      await fetch("http://localhost:4000/users", {
+      await fetch(`${config.baseUrl}/users`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",

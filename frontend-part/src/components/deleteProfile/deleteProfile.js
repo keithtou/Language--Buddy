@@ -31,7 +31,7 @@ function DeleteProfileModal ({ show, handleClose }) {
 
 
    async function deleteData() {
-    await fetch(`http://localhost:4000/users/${current_id}`, {
+    await fetch(`${config.baseUrl}/users/${current_id}`, {
      method: 'DELETE',
      headers: {
          'Authorization': "Bearer " + token
