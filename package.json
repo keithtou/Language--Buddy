@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {
-    "build": "cd Proyect-Backend && npm install && cd ..",
+  "scripts": {  
+    "build": "cd frontend-part && npm install && npm run build && cd .. && rm -rf Proyect-Backend/src/build && mkdir Proyect-Backend/src/build && mv frontend-part/build/* Proyect-Backend/src/build && cd Proyect-Backend && npm install && cd ..",
     "start": "cd Proyect-Backend && npm start && cd .."
   },
   "repository": {
