@@ -11,6 +11,7 @@ import {country } from "../../data/country";
 import {languageList } from "../../data/languagesList";
 import {levels} from "../../data/levels";
 import Logo from '../logo/logo';
+import config from '../../config'
 
 
 function EditProfile() {
@@ -90,7 +91,7 @@ function EditProfile() {
   
   
   async function edit() {
-       await fetch(`http://localhost:4000/users/${current_id}`, {
+       await fetch(`${config.baseUrl}/users/${current_id}`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json',
@@ -125,7 +126,7 @@ function EditProfile() {
   useEffect( () => {
     (async () => {
         try {
-          await  fetch(`http://localhost:4000/users/${current_id}`, {
+          await  fetch(`${config.baseUrl}/users/${current_id}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',

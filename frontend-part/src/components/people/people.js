@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import StudentHeader from "../studentHeader/studentHeader";
 import { useNavigate } from "react-router-dom";
 import SearchFilter from "../filter/SearchFilter";
+import config from '../../config'
 
 function People() {
   const nav = useNavigate("");
@@ -29,7 +30,7 @@ function People() {
 
   useEffect(() => {
     (async () => {
-      await fetch("http://localhost:4000/users", {
+      await fetch(`${config.baseUrl}/users`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",

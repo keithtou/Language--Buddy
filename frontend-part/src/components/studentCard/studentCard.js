@@ -3,6 +3,7 @@ import Card from "react-bootstrap/Card";
 import "./studentCard.css";
 // import image from "../../images/Profile-PNG-File.png"
 import { useNavigate } from "react-router-dom";
+import config from '../../config'
 
 
 function StudentCard(props) {
@@ -13,7 +14,7 @@ function StudentCard(props) {
   let token = localStorage.getItem("jwtToken");
 
   async function createConnection(id) {
-    await fetch('http://localhost:4000/connections', {
+    await fetch(`${config.baseUrl}/connections`, {
      method: 'POST',
      headers: {
          'Content-Type': 'application/json',

@@ -4,6 +4,7 @@ import Form from "react-bootstrap/Form";
 import { useNavigate } from "react-router-dom";
 import "./signIn.css";
 import Logo from "../logo/logo";
+import config from '../../config'
 
 function SignIn() {
   const nav = useNavigate();
@@ -27,7 +28,7 @@ function SignIn() {
   
 
 async function login() {
-      await fetch('http://localhost:4000/sign-in', {
+      await fetch(`${config.baseUrl}/sign-in`, {
       method: 'POST',
       headers: {
           'Content-Type': 'application/json'
