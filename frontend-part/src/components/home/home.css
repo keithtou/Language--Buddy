@@ -1,6 +1,80 @@
 
 #main {
-  /* height: 100vh;  */
-  padding-top: 105PX;
 
 }
+
+.welcome_block {
+  margin: 20px auto;
+  display: flex;
+  align-items: center;
+  width: 90%;
+  max-height: 150px;
+  font-weight: 500;
+  font-size: 38px;
+  line-height: 114%;
+  text-align: center;
+  letter-spacing: -0.02em;
+  color: #0297A6; 
+}
+
+#aboutus {
+
+}
+
+
+#aboutus p {
+  text-align: center;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 124%;
+  letter-spacing: -0.015em;
+  color: #c85517; 
+  margin: 50px; 
+}
+
+#aboutus a {
+  color: #0297a6;
+}
+
+#aboutus a:hover {
+  color:  #023237;
+  transition-delay: 1s;
+}
+
+
+#faq {
+   padding-bottom: 40px;
+ 
+}
+
+#faq p{
+  text-align: center;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 144%;
+  letter-spacing: -0.015em;
+  color: #c85517; 
+  }
+
+
+  .inspiring_container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  
+  }
+
+  .first_container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .first_container p {
+    padding: 80px ;
+  }
+
+
+
+
+
+
