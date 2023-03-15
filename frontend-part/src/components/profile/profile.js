@@ -12,6 +12,7 @@ function Profile() {
   const nav = useNavigate();
 
   const [current_user, setCurrent] = useState({});
+  let current_avatar = `https://api.multiavatar.com/${current_user["username"]}.svg`;
 
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
@@ -70,22 +71,25 @@ function Profile() {
               < StudentHeader />
 
               <div className="profile_container">
-                 <Card className="profile_card" >
-                     <Card.Body className="profile_body">
-                        <Card.Title className="card_title"> FULL NAME:  {current_user["full_name"]}</Card.Title> 
-                        <Card.Title className="card_title">USERNAME: {current_user["username"]}</Card.Title>
-                        <Card.Subtitle className="mb-2 text-muted">COUNTRY: {current_user["nationality"]}</Card.Subtitle>
-                        <Card.Subtitle className="mb-2 text-muted">AGE: {ageW(current_user["date_of_birth"])}</Card.Subtitle>
-                        <Card.Subtitle className="mb-2 text-muted">GENDER: {current_user["gender"]}</Card.Subtitle>
-                        <Card.Subtitle className="mb-3 text-muted">{current_user["language_name"]} - {current_user["levels"]}</Card.Subtitle>
-                        <Card.Text>DESCRIPTION: {current_user["description"]}</Card.Text>
-                     </Card.Body>
-                  </Card>
-                  
-                  <div className="profile_button_container">
+
+                <Card className="profile_card" >
+                   <Card.Img variant="top" src={current_avatar}  width="160" height="140" />
+                   <Card.Body className="profile_body">
+                    <Card.Title className="card_title">FULL NAME:  {current_user["full_name"]}</Card.Title>
+                    <Card.Title className="card_title">USERNAME: {current_user["username"]}</Card.Title>
+                    <Card.Subtitle className="mb-2 text-muted">COUNTRY: {current_user["nationality"]}</Card.Subtitle>
+                    <Card.Subtitle className="mb-3 text-muted">AGE: {ageW(current_user["date_of_birth"])}</Card.Subtitle>
+                    <Card.Subtitle className="mb-3 text-muted">GENDER: {current_user["gender"]}</Card.Subtitle>
+                    <Card.Subtitle className="mb-3 text-muted">{current_user["language_name"]} - {current_user["levels"]}</Card.Subtitle>
+                    <Card.Text className="description_profile">DESCRIPTION: {current_user["description"]}</Card.Text>
                     <Button className="button edit_button" onClick={()=> nav("/edit_profile")}>Edit profile</Button>
-                    <Button className="button delete_button" onClick={handleShow}>Delete profile and data</Button>
-                  </div> 
+                 </Card.Body>
+               </Card>
+
+                  
+                <div className="profile_button_container">
+                  <Button className="button delete_button" onClick={handleShow}>Delete profile and data</Button>
+                </div> 
               </div>
         
               <DeleteProfileModal handleClose={handleClose} show={show} />  
