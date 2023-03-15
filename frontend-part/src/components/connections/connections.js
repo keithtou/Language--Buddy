@@ -117,7 +117,7 @@ function Connections() {
         
         <div className="connections_container">
         <div className="connection_wrapper">
-          <h4 className="connections_name">Sent requests</h4>
+          <h4 className="connections_name">Buddy requests sent</h4>
           <div className="sent_container">
 
           {arrSent.length > 0 ? (
@@ -130,14 +130,14 @@ function Connections() {
                 </Card.Body>
                 <Button className="button" type="submit" onClick={() => deleteConnection(el.id)}> Delete</Button>
               </Card>
-               )))  : (<div>You do not have any pending requests at the moment.</div> )}
+               )))  : (<div>You do not have any Buddy requests sent at the moment.</div> )}
 
           
         </div>
         </div>
 
         <div className="connection_wrapper">
-            <h4 className="connections_name">Incoming requests</h4>
+            <h4 className="connections_name">Buddy requests received</h4>
             <div className="inbox_container">
 
             {arrInbox.length > 0 ? (
@@ -153,13 +153,13 @@ function Connections() {
                   <Button className="button " type="submit" onClick={() => updateConnection(el.id, 'rejected')}> Reject</Button>
                 </div>
               </Card>
-                ))) : (<div>You do not have any incoming requests at the moment.</div> )}
+                ))) : (<div>You do not have any Buddy requests received at the moment.</div> )}
 
             </div> 
         </div>
 
         <div className="connection_wrapper">
-             <h4 className="connections_name">Buddies</h4>
+             <h4 className="connections_name">My buddies</h4>
              <div className="buddy_container">
 
              {arrBuddies.length > 0 ? (

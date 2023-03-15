@@ -12,7 +12,7 @@ function StudentHeader() {
                <div className="main_header">
                      <Logo />
                      <div className="button_container">
-                        <Button className="button request_button" type="submit" onClick={() => nav("/connections")} > Connections</Button>
+                        <Button className="button request_button" type="submit" onClick={() => nav("/connections")} > My buddies</Button>
                         <Button className="button people_button" type="submit" onClick={() => nav("/people")} > People</Button>
                         <DropdownButtons />
                     </div>
