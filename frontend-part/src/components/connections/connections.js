@@ -44,7 +44,6 @@ function Connections() {
         })
         .then(
           (data) => {
-            console.log(data)
             setRequests(requests.filter(el => el.id != id))  
           },
           (error) => {
@@ -53,8 +52,6 @@ function Connections() {
           }
         );
     };
-
-    console.log(requests);
 
     const updateConnection =  async (id, status) => {
         await fetch(`${config.baseUrl}/connections/${id}`, {
@@ -108,7 +105,9 @@ function Connections() {
     })();
   }, []);
 
-
+  let arrSent = requests.filter(el => el.status == "pending" && el.requester_id == current_id);
+  let arrInbox = requests.filter(el => el.status == "pending" && el.responder_id == current_id);
+  let arrBuddies = requests.filter(el => el.status == "approved");
 
   
   return (
@@ -117,10 +116,12 @@ function Connections() {
         < StudentHeader />
         
         <div className="connections_container">
-        <div >
+        <div className="connection_wrapper">
           <h4 className="connections_name">Sent requests</h4>
           <div className="sent_container">
-          {requests.filter(el => el.status == "pending" && el.requester_id == current_id).map((el, index) => (
+
+          {arrSent.length > 0 ? (
+            arrSent.map((el, index) => (
                <Card className="sent_card" id={el.id} key={index}>
                 <Card.Body className="sent_body">
                 <Card.Title className="sent_title">{el.responder_username}</Card.Title>
@@ -129,55 +130,60 @@ function Connections() {
                 </Card.Body>
                 <Button className="button" type="submit" onClick={() => deleteConnection(el.id)}> Delete</Button>
               </Card>
-               ))}
+               )))  : (<div>You do not have any pending requests at the moment.</div> )}
+
+          
         </div>
         </div>
 
-        <div>
+        <div className="connection_wrapper">
             <h4 className="connections_name">Incoming requests</h4>
             <div className="inbox_container">
-             {requests.filter(el => el.status == "pending" && el.responder_id == current_id).map((el, index) => (
-                  <Card key={index}  className="inbox_card">
-                  <Card.Body className="inbox_body">
-                  <Card.Title className="inbox_title">{el.responder_username}</Card.Title>
-                  <Card.Subtitle className="mb-2 text-muted"></Card.Subtitle>
-                  <Card.Subtitle className="mb-3 text-muted"></Card.Subtitle>
-                  </Card.Body>
-                  <div className="response-container">
-                    <Button className="button " type="submit" onClick={() => updateConnection(el.id, 'approved')}> Accept</Button>
-                    <Button className="button " type="submit" onClick={() => updateConnection(el.id, 'rejected')}> Reject</Button>
-                  </div>
-                 
-                </Card>
 
+            {arrInbox.length > 0 ? (
+               arrInbox.map((el, index) => (
+                <Card key={index}  className="inbox_card">
+                <Card.Body className="inbox_body">
+                <Card.Title className="inbox_title">{el.responder_username}</Card.Title>
+                <Card.Subtitle className="mb-2 text-muted"></Card.Subtitle>
+                <Card.Subtitle className="mb-3 text-muted"></Card.Subtitle>
+                </Card.Body>
+                <div className="response-container">
+                  <Button className="button " type="submit" onClick={() => updateConnection(el.id, 'approved')}> Accept</Button>
+                  <Button className="button " type="submit" onClick={() => updateConnection(el.id, 'rejected')}> Reject</Button>
+                </div>
+              </Card>
+                ))) : (<div>You do not have any incoming requests at the moment.</div> )}
 
-
-                  ))} 
             </div> 
         </div>
 
-        <div>
+        <div className="connection_wrapper">
              <h4 className="connections_name">Buddies</h4>
              <div className="buddy_container">
-                {requests.filter(el => el.status == "approved").map((el) => (
-                   (el.responder_id  == current_id) ?  (
-                    <Card className="buddy_card" key={Math.random()}>
-                      <Card.Body className="buddy_body">
-                      <Card.Title className="buddy_title">{el.requester_username}</Card.Title>
-                      <Card.Subtitle className="mb-2 text-muted">{el.requester_email}</Card.Subtitle>
-                      <Card.Subtitle className="mb-3 text-muted"></Card.Subtitle>
-                    </Card.Body>
-                  </Card>
-                   ) : ( 
-                  <Card className="buddy_card" key={Math.random()}>
-                    <Card.Body className="buddy_body">
-                    <Card.Title className="buddy_title"> {el.responder_username}</Card.Title>
-                    <Card.Subtitle className="mb-2 text-muted">{el.responder_email}</Card.Subtitle>
-                    <Card.Subtitle className="mb-3 text-muted"></Card.Subtitle>
-                    </Card.Body>
-                  </Card>
-                )  
-              ))} 
+
+             {arrBuddies.length > 0 ? (
+                arrBuddies.map((el) => (
+                  (el.responder_id  == current_id) ?  (
+                   <Card className="buddy_card" key={Math.random()}>
+                     <Card.Body className="buddy_body">
+                     <Card.Title className="buddy_title">{el.requester_username}</Card.Title>
+                     <Card.Subtitle className="mb-2 text-muted">{el.requester_email}</Card.Subtitle>
+                     <Card.Subtitle className="mb-3 text-muted"></Card.Subtitle>
+                   </Card.Body>
+                 </Card>
+                  ) : ( 
+                 <Card className="buddy_card" key={Math.random()}>
+                   <Card.Body className="buddy_body">
+                   <Card.Title className="buddy_title"> {el.responder_username}</Card.Title>
+                   <Card.Subtitle className="mb-2 text-muted">{el.responder_email}</Card.Subtitle>
+                   <Card.Subtitle className="mb-3 text-muted"></Card.Subtitle>
+                   </Card.Body>
+                 </Card>
+               )  
+             ))) : (<div>You do not have any buddies at the moment.</div> )}
+
+               
             </div>
         </div>
 
