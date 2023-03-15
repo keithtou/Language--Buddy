@@ -116,7 +116,7 @@ async function register() {
 
   return (
     <div className="wrapper">
-    <div className="signup_wrapper">
+    <p className="signup_wrapper">
       <Logo />
       <div className="signup__content">
          <h3>Create your profile</h3>
@@ -301,7 +301,7 @@ async function register() {
       <Button className="button signup_login_button" type="submit" onClick={handleSubmit}>Register</Button>
     </Form>
     </div>
-    </div>
+    </p>
     </div>
   );
 }
