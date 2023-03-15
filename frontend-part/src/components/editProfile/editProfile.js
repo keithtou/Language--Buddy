@@ -19,7 +19,6 @@ function EditProfile() {
 
     const [errors, setErrors] = useState({});
     const [current_user, setCurrent] = useState({});
-    console.log(current_user)
 
     const [form, setForm] = useState({});
 
@@ -73,6 +72,7 @@ function EditProfile() {
       if(!level || level === "Select Level") newErrors.level = "Please enter your level"
       if(!nationality || nationality === "Select nationality") newErrors.nationality = "Please enter your nationality"
       if(!bio || bio === "") newErrors.bio = "Please enter your date bio"
+      else if( bio.length > 200) newErrors.bio = "Your bio must be contain at most 200 characters"
   
       return newErrors
     }

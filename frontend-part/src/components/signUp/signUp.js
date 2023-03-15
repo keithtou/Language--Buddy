@@ -61,6 +61,7 @@ function SignUp() {
     if(!level || level === "Select Level") newErrors.level = "Please enter your level"
     if(!nationality || nationality === "Select nationality") newErrors.nationality = "Please enter your nationality"
     if(!bio || bio === "") newErrors.bio = "Please enter your date bio"
+    else if( bio.length > 200) newErrors.bio = "Your bio must be contain at most 200 characters"
 
     return newErrors
   }

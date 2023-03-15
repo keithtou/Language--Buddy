@@ -50,7 +50,7 @@ function StudentCard(props) {
         <Card.Title className="card_title">{props.students["username"]}</Card.Title>
         <Card.Subtitle className="mb-2 text-muted">{props.students["nationality"]}</Card.Subtitle>
         <Card.Subtitle className="mb-3 text-muted">{props.students["language_name"]} - {props.students["levels"]}</Card.Subtitle>
-        <Card.Text>{props.students["description"]}</Card.Text>
+        <Card.Text className="description_card">{props.students["description"]}</Card.Text>
         <Button className="button send_button" type="submit" onClick={() => createConnection(props.students["id"])}>
           Send Request
         </Button>
