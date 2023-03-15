@@ -64,6 +64,8 @@ function People() {
       <div className="wrapper">
            <StudentHeader />
 
+           <h2 className="people_title"> Find your language buddy</h2>
+
           {loading ? (
             <p>The list of students is loading...</p>
           ) : error != "" ? (
