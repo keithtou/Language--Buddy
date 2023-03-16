@@ -65,6 +65,7 @@ nav ul li:hover {
 
   .logos img {
     height: 35px;
+  
   }
 
   .occ,
@@ -95,6 +96,10 @@ nav ul li:hover {
   .language-selector {
     padding-bottom:  15px;
     text-align: center;
+  }
+
+  .logos img {
+    height: 30px;
   }
 
 }
