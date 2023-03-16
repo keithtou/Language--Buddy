@@ -30,15 +30,7 @@
   transition-delay: 1s;
 }
 
-
-#faq {
-  padding-bottom: 40px;
-}
-
 .inspiring_container {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
   text-align: center;
   font-weight: 500;
   font-size: 26px;
@@ -50,9 +42,12 @@
 
 .first_container {
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  padding: 40px;
+
 }
 
 .first_container p {
-  padding: 80px;
+  width: 50%;
 }
