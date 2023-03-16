@@ -13,47 +13,37 @@ function Home() {
             <div className="wrapper"> 
 
               <div  id="main" >
-
-              <div className="welcome_block">
-                     <p>Welcome to Language Buddy, the app that connects you with language learners around the world!</p>
-                 </div> 
-                 < Image className='img-fluid shadow-4' src ={myImage}/>
-             
+                <div className="welcome_block">
+                  <p>Welcome to Language Buddy, the app that connects you with language learners around the world!</p>
+                </div> 
+                < Image className='img-fluid shadow-4' src ={myImage}/>
               </div>
 
               <div id="aboutus">
                    <p>
-                   Ready to take your language skills to the next level? <a href="/register">Sign up</a>  for Language Buddy and start making connections today!
+                   Ready to take your language skills to the next level? 
+                   <a href="/register"> Sign up</a>  for Language Buddy and start making connections today!
                    </p>
               </div>
 
 
               <div id="faq">
-
-              < Image className='img-fluid shadow-4' src ={myImageAdd}/>
-
-              <div className="inspiring_container">
-                <div className="first_container">
-                  <p >Learn a new language the easy way with Language Buddy. Connect with native speakers and practice your skills anytime, anywhere!</p>  
-                   <p></p>
-              </div>
-
-              <div className="first_container">
-                  <p></p>
-                  <p>With Language Buddy, you'll never feel alone in your language learning journey. Connect with language buddies and improve your skills together!</p>  
-                 
-              </div>
-             
-                  
-              </div>
-             
-              
-                  
-                  
+                < Image className='img-fluid shadow-4' src ={myImageAdd}/>
+                <div className="inspiring_container">
+                   <div className="first_container">
+                    <p >Learn a new language the easy way with Language Buddy. Connect with native speakers and practice your skills anytime, anywhere!</p>  
+                    <p></p>
+                   </div>
+                   <div className="first_container">
+                     <p></p>
+                     <p>With Language Buddy, you'll never feel alone in your language learning journey. Connect with language buddies and improve your skills together!</p>  
+                   </div>        
+                </div>      
               </div>
 
             </div> 
           </main>
+          
           <Footer></Footer>
         </>  
     )
