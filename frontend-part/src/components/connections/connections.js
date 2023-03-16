@@ -216,7 +216,7 @@ function Connections() {
                   <Button className="button" type="submit" onClick={() => deleteConnection(el.id)}> Delete</Button>
                 </Card.Body>
               </Card>
-                ))) : (<div>{"\u2764"}</div> )}
+                ))) : (<div>{"\u2764"} {"\u2764"} {"\u2764"}</div> )}
 
             </div>
         </div>
