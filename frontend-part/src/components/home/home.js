@@ -25,7 +25,7 @@ function Home() {
               <div id="aboutus">
                    <p>
                    Ready to take your language skills to the next level? 
-                   <a onClick={() => nav("/register")}> Sign up</a>  for Language Buddy and start making connections today!
+                   <a onClick={() => nav("/register")} className="register_link"> Sign up</a>  for Language Buddy and start making connections today!
                    </p>
               </div>
 

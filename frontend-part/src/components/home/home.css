@@ -51,3 +51,7 @@
 .first_container p {
   width: 50%;
 }
+
+.register_link:hover {
+  cursor: pointer;
+}
