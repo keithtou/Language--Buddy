@@ -39,4 +39,8 @@
     align-items: center;
     justify-content: center;
   }
+
+  .request_button {
+    width: 130px;
+  }
 }

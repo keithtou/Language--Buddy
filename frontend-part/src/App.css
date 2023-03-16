@@ -80,3 +80,13 @@ h3 {
   border: none;
 }
 
+@media screen and (max-width: 600px) {
+.button {
+  width: 130px;
+  padding: 5px 15px;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 30px;
+}
+}
+

@@ -304,8 +304,8 @@ function EditProfile() {
   
         </Row>
   
-        <Button className="button signup_login_button" type="submit" onClick={handleSubmit}>Save</Button>
-        <Button className="button signup_login_button" type="submit" onClick={() => nav("/profile")}>Cancel</Button>
+        <Button className="button login_button" type="submit" onClick={handleSubmit}>Save</Button>
+        <Button className="button login_cancel_button" type="submit" onClick={() => nav("/profile")}>Cancel</Button>
       </Form>
       </div>
       </div>

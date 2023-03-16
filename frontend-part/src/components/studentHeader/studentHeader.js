@@ -14,7 +14,7 @@ function StudentHeader() {
                      <div className="button_container">
                         <Button className="button request_button" type="submit" onClick={() => nav("/connections")} > My buddies</Button>
                         <Button className="button people_button" type="submit" onClick={() => nav("/people")} > People</Button>
-                        <DropdownButtons />
+                        <DropdownButtons className="button" />
                     </div>
                </div>
             </div>     

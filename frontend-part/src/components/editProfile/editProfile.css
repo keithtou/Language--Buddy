@@ -1,3 +1,15 @@
 .edit_wrapper {
-    /* height: 100vh; */
+    padding: 20px 25px;
+}
+
+
+.login_button {
+    margin-right: 20px;
+}
+
+
+@media screen and (max-width: 320px) {
+    .login_button {
+        margin-bottom: 20px;
+    }
 }
