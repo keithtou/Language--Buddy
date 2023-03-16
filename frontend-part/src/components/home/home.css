@@ -37,7 +37,6 @@
   line-height: 124%;
   letter-spacing: -0.02em;
   color: #c85517;
-
 }
 
 .first_container {
@@ -54,4 +53,14 @@
 
 .register_link:hover {
   cursor: pointer;
+}
+
+
+@media screen and (max-width: 550px) {
+   .inspiring_container {
+
+  font-size: 18px;
+
+
+}
 }

@@ -14,7 +14,8 @@ function Footer() {
 
             <div className="footer-wrapper">
 
-              <div className="language-selector">
+              <div className="common_information">
+                 <div className="language-selector">
                 <p>Select Language:</p>
                   <select>
                     <option value="en">English</option>
@@ -28,7 +29,8 @@ function Footer() {
                   <li><a href="https://www.google.com/maps/place/Open+Cultural+Center+Barcelona/@41.3860019,2.1823493,15z/data=!4m6!3m5!1s0x12a4a2fdd0e3846f:0x5b7de3c819c66eb0!8m2!3d41.3860059!4d2.1823578!16s%2Fg%2F11f3m91v5t" target="_blank">Carrer del Rec 27, 08003 Barcelona</a></li>
                 </ul>
               </nav>
-
+              </div>
+             
              <div className="logos">
                 <ul>
                   <li><a href="https://openculturalcenter.org/language-lab/" target="_blank"> <img  className="lab" src={logo_languagelab_transparent} alt="Language lab logo" width="100%" height="60"  /></a></li>

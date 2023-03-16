@@ -1,6 +1,5 @@
 footer {
   width: 100%;
-  height: 120px;
   background-color: #0297a6;
   font-size: 12px;
 }
@@ -13,6 +12,13 @@ footer {
   align-items: flex-start;
   padding: 8px 10px 0px 8px;
 
+}
+
+.common_information {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: flex-start;
 }
 
 ul {
@@ -36,16 +42,59 @@ ul {
 .lab {
   padding-right: 20px;
   margin-top: 10px;
-
 }
 
-nav a, nav li,
+nav a,
+nav li,
 .language-selector p {
   color: white;
 }
 
-nav ul li a:hover, nav ul li:hover {
+nav ul li a:hover,
+nav ul li:hover {
   color: #a64602;
   cursor: pointer;
-  text-decoration:none
+  text-decoration: none
+}
+
+
+@media screen and (max-width: 755px) and (min-width: 525px)  {
+  footer { 
+      font-size: 10px;
+  }
+
+  .logos img {
+    height: 35px;
+  }
+
+  .occ,
+  .lab {
+    padding-right: 10px;
+  }
+
+}
+
+
+@media screen and (max-width: 524px)  and (min-width: 350px) {
+  .common_information {
+   padding-bottom:  20px;
+  }
+
+
+  .logos img {
+    height: 35px;
+  }
+
+}
+
+@media screen and (max-width: 349px) {
+  .common_information {
+    display: block; 
+  }
+
+  .language-selector {
+    padding-bottom:  15px;
+    text-align: center;
+  }
+
 }
