@@ -3,7 +3,7 @@
     align-items: flex-start;
     justify-content: space-between;
     flex-wrap: wrap;
-    height: 140px;
+    padding: 0 20px;
  }
  
  .button_container {
@@ -15,10 +15,10 @@
  }
  
  .people_button {
-   margin: 0 20px;
+   margin: 20px;
  }
  
  .request_button {
-   width: 200px
+   width: 190px;
  }
  
