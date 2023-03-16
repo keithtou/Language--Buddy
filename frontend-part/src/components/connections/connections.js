@@ -122,14 +122,17 @@ function Connections() {
 
           {arrSent.length > 0 ? (
             arrSent.map((el, index) => (
-               <Card className="sent_card" id={el.id} key={index}>
-                <Card.Body className="sent_body">
-                <Card.Title className="sent_title">{el.responder_username}</Card.Title>
-                <Card.Subtitle className="mb-2 text-muted"></Card.Subtitle>
-                <Card.Subtitle className="mb-3 text-muted"></Card.Subtitle>
-                </Card.Body>
+
+              <Card className="sent_card" id={el.id} key={index}>
+              <Card.Img variant="top" src={`https://api.multiavatar.com/${el.responder_username}.svg`}  width="160" height="140" />
+              <Card.Body className="sent_body">  
+                <Card.Title className="card_title">{el.responder_username}</Card.Title>
+                <Card.Subtitle className="mb-2 text-muted">{el.responder_nationality}</Card.Subtitle>
+                <Card.Subtitle className="mb-3 text-muted"> {el.responder_language} - {el.responder_level}</Card.Subtitle>
                 <Button className="button" type="submit" onClick={() => deleteConnection(el.id)}> Delete</Button>
-              </Card>
+              </Card.Body>
+            </Card>
+
                )))  : (<div>You do not have any Buddy requests sent at the moment.</div> )}
 
           
@@ -142,11 +145,14 @@ function Connections() {
 
             {arrInbox.length > 0 ? (
                arrInbox.map((el, index) => (
-                <Card key={index}  className="inbox_card">
-                <Card.Body className="inbox_body">
-                <Card.Title className="inbox_title">{el.responder_username}</Card.Title>
-                <Card.Subtitle className="mb-2 text-muted"></Card.Subtitle>
-                <Card.Subtitle className="mb-3 text-muted"></Card.Subtitle>
+                <Card className="inbox_card" key={index}>
+                <Card.Img variant="top" src={`https://api.multiavatar.com/${el.requester_username}.svg`}  width="160" height="140" />
+                <Card.Body className="inbox_body">  
+                  <Card.Title className="card_title">{el.requester_username}</Card.Title>
+                  <Card.Subtitle className="mb-2 text-muted">{el.requester_nationality}</Card.Subtitle>
+                  <Card.Subtitle className="mb-3 text-muted"> {el.requester_language} - {el.requester_level}</Card.Subtitle>
+                  <Card.Text className="description_card">{el.requester_description}</Card.Text>
+                  
                 </Card.Body>
                 <div className="response-container">
                   <Button className="button " type="submit" onClick={() => updateConnection(el.id, 'approved')}> Accept</Button>
@@ -165,21 +171,25 @@ function Connections() {
              {arrBuddies.length > 0 ? (
                 arrBuddies.map((el) => (
                   (el.responder_id  == current_id) ?  (
-                   <Card className="buddy_card" key={Math.random()}>
-                     <Card.Body className="buddy_body">
-                     <Card.Title className="buddy_title">{el.requester_username}</Card.Title>
-                     <Card.Subtitle className="mb-2 text-muted">{el.requester_email}</Card.Subtitle>
-                     <Card.Subtitle className="mb-3 text-muted"></Card.Subtitle>
-                   </Card.Body>
-                 </Card>
+                    <Card className="buddy_card" key={Math.random()}>
+                    <Card.Img variant="top" src={`https://api.multiavatar.com/${el.requester_username}.svg`}  width="160" height="140" />
+                    <Card.Body className="sent_body">  
+                      <Card.Title className="card_title">{el.requester_username}</Card.Title>
+                      <Card.Subtitle className="mb-2 text-muted">{el.requester_nationality}</Card.Subtitle>
+                      <Card.Subtitle className="mb-3 text-muted"> {el.requester_language} - {el.requester_level}</Card.Subtitle>
+                      <Card.Subtitle className="mb-2">{el.requester_email}</Card.Subtitle>
+                    </Card.Body>
+                  </Card>
                   ) : ( 
-                 <Card className="buddy_card" key={Math.random()}>
-                   <Card.Body className="buddy_body">
-                   <Card.Title className="buddy_title"> {el.responder_username}</Card.Title>
-                   <Card.Subtitle className="mb-2 text-muted">{el.responder_email}</Card.Subtitle>
-                   <Card.Subtitle className="mb-3 text-muted"></Card.Subtitle>
-                   </Card.Body>
-                 </Card>
+                    <Card className="buddy_card" key={Math.random()}>
+                    <Card.Img variant="top" src={`https://api.multiavatar.com/${el.responder_username}.svg`}  width="160" height="140" />
+                    <Card.Body className="sent_body">  
+                      <Card.Title className="card_title">{el.responder_username}</Card.Title>
+                      <Card.Subtitle className="mb-2 text-muted">{el.responder_nationality}</Card.Subtitle>
+                      <Card.Subtitle className="mb-3 text-muted"> {el.responder_language} - {el.responder_level}</Card.Subtitle>
+                      <Card.Subtitle className="mb-2">{el.responder_email}</Card.Subtitle>
+                    </Card.Body>
+                  </Card>
                )  
              ))) : (<div>You do not have any buddies at the moment.</div> )}
 

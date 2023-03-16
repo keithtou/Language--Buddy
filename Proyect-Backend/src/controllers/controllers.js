@@ -180,26 +180,6 @@ const delete_user = async (req, res) => {
   }
 };
 
-// const sign_in = async (req, res) => {
-//   let email = req.body.email;
-//   let password = req.body.password;
-//   console.log(email);
-//   console.log(password);
-//   const logIn = "SELECT * FROM user_info WHERE email = $1 and password = $2";
-//   pool.query(logIn, [email, password], (error, result) => {
-//     console.log(error);
-//     console.log(result);
-//     if (result.rows.length === 0) {
-//       return res.status(400).send("User doesn't exist");
-//     } else if (
-//       (result.rows[0].email === email) &
-//       (result.rows[0].password === password)
-//     ) {
-//       return res.status(200).send("Success");
-//     }
-//   });
-// };
-
 const auth = async (req, res) => {
   try {
     res.status(200).send({
@@ -214,6 +194,8 @@ const auth = async (req, res) => {
   }
 };
 
+//  language, language_level   language_level.levels, \ languages.language_name \
+
 const connections = async (req, res) => {
   const id = req.user.id;
   try {
@@ -221,13 +203,29 @@ const connections = async (req, res) => {
       "SELECT connection.*, \
                              requester.email    AS requester_email, \
                              requester.username AS requester_username, \
+                             requester.nationality    AS requester_nationality, \
+                             requester.description AS requester_description, \
+                             requester_languages.language_name AS requester_language, \
+                             requester_language_level.levels AS requester_level, \
                              responder.email    AS responder_email, \
-                             responder.username AS responder_username \
+                             responder.username AS responder_username, \
+                             responder.nationality    AS responder_nationality, \
+                             responder.description AS responder_description, \
+                             responder_languages.language_name AS responder_language, \
+                             responder_language_level.levels AS responder_level \
                       FROM   connection \
                         JOIN user_info requester \
                           ON requester.id = connection.requester_id \
                         JOIN user_info responder \
                           ON responder.id = connection.responder_id \
+                        JOIN languages  requester_languages \
+                          ON requester.language = requester_languages.id \
+                        JOIN languages responder_languages \
+                          ON responder.language = responder_languages.id \
+                        JOIN language_level requester_language_level \
+                          ON requester.language_level = requester_language_level.id \
+                        JOIN language_level responder_language_level \
+                          ON responder.language_level = responder_language_level.id \
                       WHERE  connection.requester_id = $1 \
                         OR connection.responder_id = $2",
       [id, id],
