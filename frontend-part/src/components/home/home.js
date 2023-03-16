@@ -4,8 +4,11 @@ import Header from "../header/header";
 import Image from 'react-bootstrap/Image';
 import myImage from '../../images/main_foto.jpeg';
 import myImageAdd from "../../images/world.png"
+import { useNavigate } from "react-router-dom";
 
 function Home() {
+  const nav = useNavigate();
+  
     return (
         <>
             <Header></Header>
@@ -22,7 +25,7 @@ function Home() {
               <div id="aboutus">
                    <p>
                    Ready to take your language skills to the next level? 
-                   <a href="/register"> Sign up</a>  for Language Buddy and start making connections today!
+                   <a onClick={() => nav("/register")}> Sign up</a>  for Language Buddy and start making connections today!
                    </p>
               </div>
 
@@ -43,7 +46,7 @@ function Home() {
 
             </div> 
           </main>
-          
+
           <Footer></Footer>
         </>  
     )
