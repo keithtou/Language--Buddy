@@ -13,6 +13,8 @@ const updateConnectionStatus =
   "UPDATE connection SET status = $1 WHERE id=$2 RETURNING *";
 
 const getAll = async (req, res) => {
+  const actor_id = req.user.id;
+
   try {
     await pool.query(
       "SELECT user_info.*, \
@@ -20,7 +22,13 @@ const getAll = async (req, res) => {
                             languages.language_name \
                       FROM user_info \
                       JOIN languages ON user_info.language = languages.id \
-                      JOIN language_level ON language_level.id = user_info.language_level",
+                      JOIN language_level ON language_level.id = user_info.language_level \
+                      WHERE user_info.id NOT IN ( \
+                          SELECT user_info.id FROM user_info \
+                            JOIN connection ON (user_info.id = connection.requester_id OR user_info.id = connection.responder_id) \
+                            WHERE connection.requester_id=$1 OR \
+                                  connection.responder_id=$1)",
+      [actor_id],
       (error, result) => {
         res.json(result.rows);
       }
@@ -243,10 +251,10 @@ const connections = async (req, res) => {
 
 const createConnection = async (req, res) => {
   const { responder_id } = req.body;
-  const requester_id = req.user.id;
+  const actor_id = req.user.id;
 
   try {
-    if (responder_id == requester_id) {
+    if (responder_id == actor_id) {
       return res.status(400).json({
         message: "Cannot make connection to yourself.",
       });
@@ -254,17 +262,17 @@ const createConnection = async (req, res) => {
 
     let connection = await pool.query(
       "SELECT * FROM connection WHERE responder_id=$1 AND requester_id=$2",
-      [requester_id, responder_id]
+      [actor_id, responder_id]
     );
 
     if (connection.rows.length > 0) {
       return res.status(400).json({
-        message: `Cannot create connection ${requester_id} - ${responder_id}. Reverse connection already exists.`,
+        message: `Cannot create connection ${actor_id} - ${responder_id}. Reverse connection already exists.`,
       });
     }
 
     let newConnection = await pool.query(insertConnection, [
-      requester_id,
+      actor_id,
       responder_id,
       "pending",
     ]);
@@ -273,7 +281,7 @@ const createConnection = async (req, res) => {
   } catch (error) {
     console.error(error.message);
     res.status(400).json({
-      message: `Cannot create connection between ${responder_id} and ${requester_id}`,
+      message: `Cannot create connection between ${responder_id} and ${actor_id}`,
     });
   }
 };
@@ -281,7 +289,7 @@ const createConnection = async (req, res) => {
 const updateConnection = async (req, res) => {
   const connection_id = req.params.id;
   const { status } = req.body;
-  const requester_id = req.user.id;
+  const actor_id = req.user.id;
 
   if (status !== "approved" && status !== "rejected") {
     return res.status(400).json({
@@ -292,7 +300,7 @@ const updateConnection = async (req, res) => {
   try {
     let connection = await pool.query(
       "SELECT * FROM connection WHERE id=$1 AND responder_id=$2 AND status='pending'",
-      [connection_id, requester_id]
+      [connection_id, actor_id]
     );
 
     if (connection.rows.length === 0) {
@@ -312,19 +320,19 @@ const updateConnection = async (req, res) => {
   } catch (error) {
     console.error(error.message);
     res.status(400).json({
-      message: `Cannot create connection between ${responder_id} and ${requester_id}`,
+      message: `Cannot create connection between ${responder_id} and ${actor_id}`,
     });
   }
 };
 
 const deleteConnection = async (req, res) => {
   const connection_id = req.params.id;
-  const requester_id = req.user.id;
+  const actor_id = req.user.id;
 
   try {
     let connection = await pool.query(
-      "SELECT * FROM connection WHERE id=$1 AND requester_id=$2",
-      [connection_id, requester_id]
+      "SELECT * FROM connection WHERE id=$1 AND requester_id=$2 OR (responder_id=$3 AND (status='approved' OR status='rejected'))",
+      [connection_id, actor_id, actor_id]
     );
 
     if (connection.rows.length === 0) {
@@ -334,10 +342,7 @@ const deleteConnection = async (req, res) => {
     }
 
     await pool
-      .query("DELETE FROM connection WHERE id=$1 AND requester_id=$2", [
-        connection_id,
-        requester_id,
-      ])
+      .query("DELETE FROM connection WHERE id=$1", [connection_id])
       .then(() =>
         res.json({ message: `Connection ${connection_id} deleted.` })
       );

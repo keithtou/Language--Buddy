@@ -1,7 +1,6 @@
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import "./studentCard.css";
-// import image from "../../images/Profile-PNG-File.png"
 import { useNavigate } from "react-router-dom";
 import config from '../../config'
 
@@ -26,8 +25,6 @@ function StudentCard(props) {
  })
  .then((response) => {
     if (response.status === 400) {
-     document.querySelector(".exist_container").classList.add("visible");
-     setTimeout(() => {nav("/login")}, 4000);
      throw new Error('Something went wrong');
     }
     if (response.status === 200) {

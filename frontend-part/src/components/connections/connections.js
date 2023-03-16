@@ -31,7 +31,6 @@ function Connections() {
   let current_id = result.sub;
 
   const deleteConnection =  async (id) => {
-    console.log(requests);
       await fetch(`${config.baseUrl}/connections/${id}`, {
         method: "DELETE",
         headers: {
@@ -109,6 +108,8 @@ function Connections() {
   let arrInbox = requests.filter(el => el.status == "pending" && el.responder_id == current_id);
   let arrBuddies = requests.filter(el => el.status == "approved");
 
+  let arrBlackList = requests.filter(el => el.status == "rejected" && el.responder_id == current_id);
+
   
   return (
     <div>
@@ -178,6 +179,7 @@ function Connections() {
                       <Card.Subtitle className="mb-2 text-muted">{el.requester_nationality}</Card.Subtitle>
                       <Card.Subtitle className="mb-3 text-muted"> {el.requester_language} - {el.requester_level}</Card.Subtitle>
                       <Card.Subtitle className="mb-2">{el.requester_email}</Card.Subtitle>
+                      <Button className="button" type="submit" onClick={() => deleteConnection(el.id)}> Delete</Button>
                     </Card.Body>
                   </Card>
                   ) : ( 
@@ -188,12 +190,34 @@ function Connections() {
                       <Card.Subtitle className="mb-2 text-muted">{el.responder_nationality}</Card.Subtitle>
                       <Card.Subtitle className="mb-3 text-muted"> {el.responder_language} - {el.responder_level}</Card.Subtitle>
                       <Card.Subtitle className="mb-2">{el.responder_email}</Card.Subtitle>
+                      <Button className="button" type="submit" onClick={() => deleteConnection(el.id)}> Delete</Button>
                     </Card.Body>
                   </Card>
                )  
              ))) : (<div>You do not have any buddies at the moment.</div> )}
+            </div>
+        </div>
 
-               
+
+
+        <div className="connection_wrapper">
+            <h4 className="connections_name">My Rejects</h4>
+            <div className="inbox_container">
+
+            {arrBlackList.length > 0 ? (
+               arrBlackList.map((el, index) => (
+                <Card className="inbox_card" key={index}>
+                <Card.Img variant="top" src={`https://api.multiavatar.com/${el.requester_username}.svg`}  width="160" height="140" />
+                <Card.Body className="inbox_body">
+                  <Card.Title className="card_title">{el.requester_username}</Card.Title>
+                  <Card.Subtitle className="mb-2 text-muted">{el.requester_nationality}</Card.Subtitle>
+                  <Card.Subtitle className="mb-3 text-muted"> {el.requester_language} - {el.requester_level}</Card.Subtitle>
+                  <Card.Text className="description_card">{el.requester_description}</Card.Text>
+                  <Button className="button" type="submit" onClick={() => deleteConnection(el.id)}> Delete</Button>
+                </Card.Body>
+              </Card>
+                ))) : (<div>{"\u2764"}</div> )}
+
             </div>
         </div>
 
