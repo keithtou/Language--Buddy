@@ -33,6 +33,17 @@ function EditProfile() {
       return age
     }
 
+
+    const calcDate = (dateString) => {
+      const date = new Date(dateString);
+      const day = date.getDate();
+      const month = date.getMonth() + 1;
+      const year = date.getFullYear();
+      const formattedDate = `${year.toString()}-${month.toString().padStart(2, '0')}-${day.toString().padStart(2, '0')}`;
+      return formattedDate;
+    }
+
+
     //encode JWTtoken and get current id user
     let token = localStorage.getItem("jwtToken");
     let base64Url = token.split('.')[1];
@@ -60,7 +71,6 @@ function EditProfile() {
     const validateForm = () => { 
       const {dob, fullname, username, gender, language, level, nationality, bio} = form;
       const newErrors ={};
-  
       if(!dob || dob === "") newErrors.dob = "Please enter your date birth"
       else if(calcAge(dob) < 18) newErrors.dob = "You need to be at least 18 years"
       if(!fullname || fullname === "") newErrors.fullname = "Please enter your fullname"
@@ -104,8 +114,8 @@ function EditProfile() {
             gender: form.gender,
             date_of_birth: form.dob,
             nationality: form.nationality,
-            language: languageList.find(element => element.name === form.language).id,
-            language_level: levels.find(element => element.name === form.level).id
+            language: form.language,
+            language_level: form.level
   
         })
     })
@@ -140,7 +150,20 @@ function EditProfile() {
             }
             return res.json();
           })
-           .then(data => setCurrent(data));
+           .then(data => {
+            setCurrent(data)
+            setForm({
+              fullname: data.full_name,
+              dob: calcDate(data.date_of_birth),
+              username: data.username, 
+              gender: data.gender, 
+              language: data.language, 
+              level: data.language_level, 
+              nationality: data.nationality, 
+              bio: data.description
+            })
+           }
+            );
         } catch (err) {
           console.error(err);
         }
@@ -161,11 +184,10 @@ function EditProfile() {
           <Form.Group as={Col} controlId="fullname">
             <Form.Label>First and last name</Form.Label>
             <Form.Control
-              onChange={(e) => setField("fullname", e.target.value || current_user.full_name)}
-              value={form.fullname }
+              onChange={(e) => setField("fullname", e.target.value)}
+              value={form.fullname}
               isInvalid={!!errors.fullname}
               type="text"
-              placeholder={current_user["full_name"]}
             />
             <Form.Control.Feedback type="invalid">{errors.fullname}</Form.Control.Feedback>
           </Form.Group>
@@ -176,11 +198,10 @@ function EditProfile() {
             <InputGroup hasValidation>
               <InputGroup.Text id="inputGroupPrepend">@</InputGroup.Text>
               <Form.Control
-                onChange={(e) => setField("username", e.target.value || current_user.username)}
+                onChange={(e) => setField("username", e.target.value)}
                 value={form.username} 
                 isInvalid={!!errors.username}
                 type="text"
-                placeholder={current_user["username"]}
                 aria-describedby="inputGroupPrepend"
               />
               <Form.Control.Feedback type="invalid">{errors.username}</Form.Control.Feedback>
@@ -193,10 +214,9 @@ function EditProfile() {
           <Form.Group as={Col} controlId="nationality">
           <Form.Label>Nationality</Form.Label>
           <Form.Control 
-            onChange={(e) => setField("nationality", e.target.value || current_user.nationality)}
+            onChange={(e) => setField("nationality", e.target.value)}
             value={form.nationality} 
             isInvalid={!!errors.nationality}
-            placeholder={current_user["nationality"]}
             as="select" 
             type="select" 
             >
@@ -216,10 +236,9 @@ function EditProfile() {
           <Form.Group as={Col} controlId="gender">
           <Form.Label>Gender</Form.Label>
           <Form.Control 
-            onChange={(e) => setField("gender", e.target.value || current_user.gender)}
+            onChange={(e) => setField("gender", e.target.value)}
             value={form.gender} 
             isInvalid={!!errors.gender}
-            placeholder={current_user["gender"]}
             as="select" 
             type="select" 
             >
@@ -236,17 +255,16 @@ function EditProfile() {
           <Form.Group as={Col} controlId="language">
           <Form.Label>Language you can speak</Form.Label>
           <Form.Control 
-            onChange={(e) => setField("language", e.target.value || current_user.language)}
+            onChange={(e) => setField("language", e.target.value)}
             value={form.language} 
             isInvalid={!!errors.language}
-            placeholder={current_user["language"]}
             as="select" 
             type="select"
               >
                 <option>Select Language</option>
                 {languageList.map((element, index) => {
                   return (
-                   <option value={element.name} key={index}> {element.name}</option>
+                   <option value={element.id} key={index}> {element.name}</option>
       );
     })}
           </Form.Control>
@@ -256,17 +274,16 @@ function EditProfile() {
           <Form.Group as={Col} controlId="level">
           <Form.Label>Language Level</Form.Label>
           <Form.Control 
-            onChange={(e) => setField("level", e.target.value || current_user.language_level)}
+            onChange={(e) => setField("level", e.target.value)}
             value={form.level} 
             isInvalid={!!errors.level}
-            placeholder={current_user["language_level"]}
             as="select" 
             type="select" 
               >
                 <option>Select Level</option>
               {levels.map((element, index) => {
                   return (
-                    <option value={element.name} key={index}>{element.name}</option>
+                    <option value={element.id} key={index}>{element.name}</option>
                   )
                 })}
           </Form.Control>
@@ -279,7 +296,7 @@ function EditProfile() {
             <Form.Label>Birthday</Form.Label>
             <Form.Control 
               type="date"
-              onChange={(e) => setField("dob", e.target.value || current_user.date_of_birth)}
+              onChange={(e) => setField("dob", e.target.value)}
               value={form.dob} 
               isInvalid={!!errors.dob}
           
@@ -292,12 +309,11 @@ function EditProfile() {
           <Form.Group as={Col} controlId="bio">
             <Form.Label>BIO</Form.Label>
             <Form.Control 
-              onChange={(e) => setField("bio", e.target.value || current_user.description)}
+              onChange={(e) => setField("bio", e.target.value)}
               value={form.bio} 
               isInvalid={!!errors.bio}
               as="textarea" 
               rows={2} 
-              placeholder={current_user["description"]}
                />
               <Form.Control.Feedback type="invalid">{errors.bio}</Form.Control.Feedback>
           </Form.Group>
