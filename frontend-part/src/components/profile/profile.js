@@ -75,13 +75,13 @@ function Profile() {
                 <Card className="profile_card" >
                    <Card.Img variant="top" src={current_avatar}  width="160" height="140" />
                    <Card.Body className="profile_body">
-                    <Card.Title className="card_title">FULL NAME:  {current_user["full_name"]}</Card.Title>
-                    <Card.Title className="card_title">USERNAME: {current_user["username"]}</Card.Title>
-                    <Card.Subtitle className="mb-2 text-muted">COUNTRY: {current_user["nationality"]}</Card.Subtitle>
-                    <Card.Subtitle className="mb-3 text-muted">AGE: {ageW(current_user["date_of_birth"])}</Card.Subtitle>
-                    <Card.Subtitle className="mb-3 text-muted">GENDER: {current_user["gender"]}</Card.Subtitle>
+                    <Card.Title className="card_title">Fullname :  {current_user["full_name"]}</Card.Title>
+                    <Card.Title className="card_title">Username : {current_user["username"]}</Card.Title>
+                    <Card.Subtitle className="mb-2 text-muted">Country : {current_user["nationality"]}</Card.Subtitle>
+                    <Card.Subtitle className="mb-3 text-muted">Age : {ageW(current_user["date_of_birth"])}</Card.Subtitle>
+                    <Card.Subtitle className="mb-3 text-muted">GENDER : {current_user["gender"]}</Card.Subtitle>
                     <Card.Subtitle className="mb-3 text-muted">{current_user["language_name"]} - {current_user["levels"]}</Card.Subtitle>
-                    <Card.Text className="description_profile">DESCRIPTION: {current_user["description"]}</Card.Text>
+                    <Card.Text className="description_profile">DESCRIPTION : {current_user["description"]}</Card.Text>
                     <Button className="button edit_button" onClick={()=> nav("/edit_profile")}>Edit profile</Button>
                  </Card.Body>
                </Card>
