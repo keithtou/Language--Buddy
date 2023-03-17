@@ -41,7 +41,9 @@ const getAll = async (req, res) => {
 };
 
 const getById = async (req, res) => {
-  const { id } = req.params;
+  const {
+    id
+  } = req.params;
   try {
     await pool.query(
       "SELECT user_info.*, \
@@ -111,7 +113,10 @@ const createUser = async (req, res) => {
 };
 
 const login = async (req, res) => {
-  const { email, password } = req.body;
+  const {
+    email,
+    password
+  } = req.body;
   try {
     const user = await pool.query("SELECT * FROM user_info WHERE email = $1", [
       email,
@@ -177,16 +182,38 @@ const edit = async (req, res) => {
 };
 
 const delete_user = async (req, res) => {
-  const { id } = req.params;
+  const {
+    id
+  } = req.params;
+  const actor_id = req.user.id;
+  const client = await pool.connect();
 
   try {
-    await pool
-      .query("DELETE FROM user_info WHERE id=$1", [id])
+    if (actor_id != id) {
+      return res.status(403).json({
+        message: "Unauthorized",
+      });
+    }
+  
+    await client.query('BEGIN')
+    const deleteConnectionsText = 'DELETE FROM connection WHERE responder_id=$1 OR requester_id=$1'
+    const resConnectionDelete = await client.query(deleteConnectionsText, [id])
+
+    const deleteUserText = 'DELETE FROM user_info WHERE id=$1'
+    const resUserDelete = await client.query(deleteUserText, [id])
+    await client.query('COMMIT')
       .then(() => res.send(`User ${id} deleted!`));
   } catch (error) {
-    console.log(error.message);
-  }
-};
+    console.log(error);
+    await client.query('ROLLBACK')
+    return res.status(400).json({
+      message: "Could not delete",
+    });
+  } finally {
+    client.release()
+  };
+
+}
 
 const auth = async (req, res) => {
   try {
@@ -250,7 +277,9 @@ const connections = async (req, res) => {
 };
 
 const createConnection = async (req, res) => {
-  const { responder_id } = req.body;
+  const {
+    responder_id
+  } = req.body;
   const actor_id = req.user.id;
 
   try {
@@ -288,7 +317,9 @@ const createConnection = async (req, res) => {
 
 const updateConnection = async (req, res) => {
   const connection_id = req.params.id;
-  const { status } = req.body;
+  const {
+    status
+  } = req.body;
   const actor_id = req.user.id;
 
   if (status !== "approved" && status !== "rejected") {
@@ -344,7 +375,9 @@ const deleteConnection = async (req, res) => {
     await pool
       .query("DELETE FROM connection WHERE id=$1", [connection_id])
       .then(() =>
-        res.json({ message: `Connection ${connection_id} deleted.` })
+        res.json({
+          message: `Connection ${connection_id} deleted.`
+        })
       );
   } catch (error) {
     console.log(error.message);
