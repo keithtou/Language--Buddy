@@ -17,7 +17,7 @@ function Home() {
 
               <div  id="main" >
                 <div className="welcome_block">
-                  <p>Welcome to Language Buddy, the app that connects you with language learners around the world!</p>
+                  <p>Welcome to Language Buddy, the platform that connects you with language learners around the world!</p>
                 </div> 
                 < Image className='img-fluid shadow-4' src ={myImage}/>
               </div>
