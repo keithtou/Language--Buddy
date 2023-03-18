@@ -304,7 +304,7 @@ async function register() {
               variant="primary"
               type="submit"
               className="button cancel_button"
-              onClick={nav("/")}
+              onClick={() => nav("/")}
             >
               Cancel
             </Button>
