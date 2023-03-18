@@ -83,7 +83,7 @@ async function login() {
               variant="primary"
               type="submit"
               className="button cancel_button"
-              onClick={nav("/")}
+              onClick={() => nav("/")}
             >
               Cancel
             </Button>
