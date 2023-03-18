@@ -300,6 +300,14 @@ async function register() {
       </Row>
 
       <Button className="button signup_login_button" type="submit" onClick={handleSubmit}>Register</Button>
+      <Button
+              variant="primary"
+              type="submit"
+              className="button cancel_button"
+              onClick={nav("/")}
+            >
+              Cancel
+            </Button>
     </Form>
     </div>
     </p>

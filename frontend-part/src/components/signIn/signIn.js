@@ -79,6 +79,14 @@ async function login() {
             >
               Login
             </Button>
+            <Button
+              variant="primary"
+              type="submit"
+              className="button cancel_button"
+              onClick={nav("/")}
+            >
+              Cancel
+            </Button>
           </Form>
         </div>
       </div>
