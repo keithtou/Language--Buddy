@@ -1,10 +1,12 @@
 const { Pool } = require("pg");
 require("dotenv").config({ path: "./vars/.env" });
-const dUser = process.env.DATABASE_USER;
+require("dotenv").config();
+const dUser = "postgres.mbnjboajqomxiwayhfgr";
 const dPassword = process.env.DATABASE_PASSWORD;
-const dHost = process.env.DATABASE_HOST;
-const dName = process.env.DATABASE_NAME;
-const dPort = process.env.DATABASE_PORT;
+const dHost = "aws-0-eu-west-2.pooler.supabase.com";
+const dName = "postgres";
+const dPort = 5432;
+
 
 const pool = new Pool({
   user: dUser,
